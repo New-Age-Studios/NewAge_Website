@@ -1,0 +1,208 @@
+.hero {
+  padding: 80px 0;
+  display: flex;
+  min-height: 70vh;
+  align-items: center;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.leftCol {
+  max-width: 600px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.secondaryAction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.secondaryAction strong {
+  display: block;
+  color: #fff;
+}
+
+.learnMore {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.learnMore:hover {
+  text-decoration: underline;
+}
+
+.rightCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+.floatingPanel {
+  position: absolute;
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 3;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.panelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.colorPicker {
+  top: 10%;
+  left: 0;
+  width: 180px;
+}
+
+.colorGradient {
+  height: 100px;
+  background: linear-gradient(to bottom, #000, transparent), linear-gradient(to right, #fff, transparent), #ff5e00;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.colorDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #ff5e00;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sliderPanel {
+  bottom: 10%;
+  right: 0;
+  width: 200px;
+}
+
+.stancePanel {
+  top: 20%;
+  right: -5%;
+  width: 150px;
+}
+
+.sliderTrack {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+  margin-top: 8px;
+}
+
+.sliderFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #ff5e00;
+  border-radius: 2px;
+  width: 80%;
+}
+
+.sliderThumb {
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #ff5e00;
+}
+
+/* Features Bar */
+.featuresBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 40px;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.featureIcon {
+  color: var(--brand-orange);
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.feature h3 {
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.feature p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

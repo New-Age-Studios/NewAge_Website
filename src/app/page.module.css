@@ -1,0 +1,64 @@
+.main {
+  min-height: 100vh;
+}
+
+.scriptsSection {
+  padding: 80px 0;
+  background: var(--bg-primary);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.filterTabs {
+  display: flex;
+  gap: 16px;
+}
+
+.tab {
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: #fff;
+  background: var(--bg-tertiary);
+}
+
+.tab.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
