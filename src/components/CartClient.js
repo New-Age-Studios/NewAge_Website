@@ -78,7 +78,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh", paddingTop: 100, paddingBottom: 100 }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh", paddingTop: 100, paddingBottom: 100 }}>
       <div className="container mx-auto max-w-[1200px] px-6 lg:px-12">
         
         {/* Header */}

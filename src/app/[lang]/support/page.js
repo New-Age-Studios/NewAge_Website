@@ -12,7 +12,7 @@ export default async function SupportPage({ params }) {
   const dict = await getDictionary(lang);
   
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh", paddingTop: 80 }} className="relative overflow-hidden">
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh", paddingTop: 80 }} className="relative overflow-hidden">
       
       {/* Background Effects */}
       <div className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-orange-500/10 to-transparent pointer-events-none" />

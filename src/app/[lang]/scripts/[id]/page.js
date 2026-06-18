@@ -22,7 +22,7 @@ export default async function ProductPage({ params }) {
 
   if (!product) {
     return (
-      <div style={{ background: "#0a0a0a", minHeight: "100vh", paddingTop: 80, fontFamily: "'Inter', sans-serif" }} className="flex items-center justify-center">
+      <div style={{ background: "#141414", minHeight: "100vh", paddingTop: 80, fontFamily: "'Inter', sans-serif" }} className="flex items-center justify-center">
         <div className="text-center">
           <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>{dict.product.not_found}</p>
           <Link href={`/${lang}/scripts`} style={{ color: "#f97316", fontSize: 14, marginTop: 12, display: "inline-block" }}>{dict.product.back_to_scripts}</Link>
@@ -32,7 +32,7 @@ export default async function ProductPage({ params }) {
   }
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh", paddingTop: 80 }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh", paddingTop: 80 }}>
       <div className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 mb-8 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>

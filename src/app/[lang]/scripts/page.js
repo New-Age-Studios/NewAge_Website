@@ -16,7 +16,7 @@ export default async function ScriptsPage({ params }) {
 
   return (
     <div
-      style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh", paddingTop: 80 }}
+      style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh", paddingTop: 80 }}
     >
       <div className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-12">
         <h1

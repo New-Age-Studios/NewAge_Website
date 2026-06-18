@@ -45,7 +45,7 @@ export default async function Home({ params }) {
   }
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh" }}>
       {/* Hero */}
       <section
         className="relative flex items-center min-h-[90vh] overflow-hidden pt-16"
@@ -104,7 +104,7 @@ export default async function Home({ params }) {
       </section>
 
       {/* Features */}
-      <section id="features" className="py-20" style={{ background: "#0a0a0a" }}>
+      <section id="features" className="py-20" style={{ background: "#141414" }}>
         <div className="container max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
             <div className="flex items-start gap-4">
@@ -140,7 +140,7 @@ export default async function Home({ params }) {
       </section>
 
       {/* Best Sellers */}
-      <section className="py-20" style={{ background: "#0a0a0a" }}>
+      <section className="py-20" style={{ background: "#141414" }}>
         <div className="container max-w-[1200px] mx-auto px-6 lg:px-12">
           <div className="flex items-center gap-2 mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
             <Flame size={20} />

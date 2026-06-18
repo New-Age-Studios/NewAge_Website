@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function TermsPage() {
   return (
-    <div className="select-text" style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a", minHeight: "100vh", paddingTop: 80, paddingBottom: 80 }}>
+    <div className="select-text" style={{ fontFamily: "'Inter', sans-serif", background: "#141414", minHeight: "100vh", paddingTop: 80, paddingBottom: 80 }}>
       <div className="container mx-auto max-w-[800px] px-6 lg:px-12 py-12">
         <h1
           className="mb-10 text-center"

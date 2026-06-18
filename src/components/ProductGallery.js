@@ -50,7 +50,7 @@ export default function ProductGallery({ product }) {
     <div>
       {/* Main view */}
       <div
-        className="relative rounded-2xl overflow-hidden mb-6 bg-[#0a0a0a]"
+        className="relative rounded-2xl overflow-hidden mb-6 bg-[#141414]"
         style={{ aspectRatio: "16/9" }}
       >
         {mediaItems.map((item) => {

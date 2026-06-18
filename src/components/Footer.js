@@ -50,7 +50,7 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
   ];
 
   return (
-    <footer style={{ fontFamily: "'Inter', sans-serif", background: "#0a0a0a" }}>
+    <footer style={{ fontFamily: "'Inter', sans-serif", background: "#141414" }}>
 
       {/* Trusted by the best */}
       <div

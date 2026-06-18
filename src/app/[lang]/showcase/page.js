@@ -77,7 +77,7 @@ export default async function ShowcasePage({ params }) {
 
           {/* Right Cards */}
           <div className="flex flex-col gap-4 relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent z-10 pointer-events-none" />
             
             <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
