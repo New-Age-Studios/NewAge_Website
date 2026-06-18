@@ -1,0 +1,139 @@
+{
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "showcase": "Showcase",
+    "docs": "Docs",
+    "support": "Support",
+    "manageOrders": "Manage Orders",
+    "logout": "Logout",
+    "login": "Login with FiveM"
+  },
+  "home": {
+    "badge": "NEW AGE STUDIOS — FIVEM MAPPING",
+    "title_part1": "Transform the ",
+    "title_part2": "energy of your ",
+    "title_highlight": "server",
+    "subtitle": "The studio focused on bringing maximum immersion, visual quality, and high performance to revolutionize the world of FiveM Roleplay.",
+    "explore_btn": "EXPLORE PRODUCTS",
+    "join_discord": "JOIN DISCORD",
+    "features": {
+      "instant_title": "Instant Delivery",
+      "instant_desc": "Available within minutes in your Cfx.re Portal account.",
+      "updates_title": "Free Updates Forever",
+      "updates_desc": "We promise to never charge you for an update, not even a v2.",
+      "secure_title": "Secure & Performant",
+      "secure_desc": "Low resmon usage, secured events & designed for scale.",
+      "setup_title": "Easy Setup",
+      "setup_desc": "Quick and easy setup, with support available 24/7."
+    },
+    "best_sellers": "Best Sellers",
+    "free": "FREE",
+    "view_all": "View All"
+  },
+  "showcase": {
+    "live_server": "Live Server",
+    "title_part1": "Experience Our",
+    "title_part2": "Scripts Live.",
+    "subtitle": "Don't just take our word for it. Connect to the official New Age Studios showcase server and test all of our premium scripts in a live FiveM environment before you buy.",
+    "connect_btn": "Connect to Server",
+    "requires_fivem": "Requires FiveM to be installed and running on your PC.",
+    "features": {
+      "updated_title": "Always Updated",
+      "updated_desc": "Our showcase server runs the absolute latest versions of all our scripts, so you experience exactly what you are purchasing.",
+      "safe_title": "Safe Testing",
+      "safe_desc": "Test permissions, admin features, and player interactions in a safe, isolated environment built specifically for demonstrations.",
+      "more_coming": "More coming soon..."
+    }
+  },
+  "footer": {
+    "trusted_title": "Trusted by the best",
+    "trusted_desc": "We're trusted by the most popular and well-known communities.",
+    "powered_by": "Powered by",
+    "about": "The studio focused on bringing maximum immersion, visual quality, and high performance to revolutionize the world of FiveM Roleplay.",
+    "currency": "Currency:",
+    "cols": {
+      "pages": "Pages",
+      "legal": "Legal",
+      "socials": "Socials",
+      "more": "More from New Age"
+    },
+    "links": {
+      "home": "Home",
+      "products": "Products",
+      "cart": "Cart",
+      "terms": "Terms of Sale",
+      "privacy": "Privacy Policy",
+      "refunds": "Refunds",
+      "impressum": "Tebex Impressum",
+      "discord": "Discord",
+      "cfx": "Cfx.re Profile",
+      "github": "GitHub",
+      "youtube": "YouTube",
+      "blog": "Blog",
+      "map_packages": "Map Packages",
+      "community": "Community"
+    },
+    "copyright": "Copyright © 2026, New Age Studios. Not affiliated with or endorsed by Rockstar North, Take-Two Interactive or other rights holders. FiveM is a copyright and registered trademark of Take-Two Interactive Software, Inc. Our checkout process is owned & operated by Tebex Limited, who handle product fulfilment, billing support and refunds. Displayed prices may be estimates using a conversion rate updated once per day. Checkout will always be in USD, GBP, EUR, CAD, AUD or BRL; so final price may differ depending on bank/payment processor exchange rate."
+  },
+  "support": {
+    "badge": "24/7 Support",
+    "title_part1": "Need Help?",
+    "title_part2": "We've got you.",
+    "subtitle": "The absolute fastest way to get your issue resolved is by joining our Discord community and opening a support ticket. Our team is always ready to help you as quickly as possible!",
+    "join_discord": "Join Our Discord",
+    "send_email": "Send Email",
+    "step1_title": "Join the server",
+    "step1_desc": "Use the button above to enter our official Discord server.",
+    "step2_title": "Open a ticket",
+    "step2_desc": "Go to the support channel, open a ticket, and we'll help you instantly.",
+    "go_to_channel": "Go to Channel",
+    "live_status": "Live Status",
+    "email_modal": {
+      "title": "Contact Us",
+      "warning": "Note: Email replies can take up to 1 week. For a faster response, we highly recommend opening a ticket on our Discord server.",
+      "your_email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success_title": "Message Sent!",
+      "success_desc": "We've received your email and will get back to you as soon as possible. Remember, Discord is faster!"
+    }
+  },
+  "product": {
+    "buy_now": "Buy Now",
+    "add_to_cart": "Add to Cart",
+    "added_to_cart": "Added to Cart",
+    "free": "FREE",
+    "back_to_scripts": "← Back to Scripts",
+    "not_found": "Product not found.",
+    "more_scripts": "More Scripts",
+    "instant_delivery": "Instant delivery",
+    "instant_delivery_desc": "Via Tebex automated system",
+    "free_updates": "Free lifetime updates",
+    "free_updates_desc": "Always on the latest version",
+    "support_24_7": "24/7 support",
+    "support_24_7_desc": "Discord community & docs"
+  },
+  "cart": {
+    "title": "Cart",
+    "packages": "packages",
+    "empty": "Your basket is empty. Your players are missing out on the ultimate FiveM experience.",
+    "browse_scripts": "Browse Scripts",
+    "fivem_script": "FiveM Script",
+    "make_perfect": "Make Your Server Perfect.",
+    "make_perfect_desc": "Our scripts are built to complement each other. Add more now for a smoother, more immersive server — your players will thank you.",
+    "view_script": "View Script",
+    "apply_coupon": "Apply Coupon",
+    "enter_coupon": "Enter coupon",
+    "apply": "Apply",
+    "summary": "Cart Summary",
+    "sub_total": "Sub total",
+    "sales_tax": "Sales Tax",
+    "discount": "Discount",
+    "total_price": "Total Price",
+    "estimated": "USD estimated; charged at checkout",
+    "secure_checkout": "Secure Checkout"
+  }
+}

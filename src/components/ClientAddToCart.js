@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ShoppingCart, Plus, Check } from "lucide-react";
 import { addToCart } from "@/app/actions/cart";
 
-export default function ClientAddToCart({ packageId, returnPath, isSecondary = false, alreadyInCart = false }) {
+export default function ClientAddToCart({ packageId, returnPath, isSecondary = false, alreadyInCart = false, dict = {} }) {
   const [isPending, startTransition] = useTransition();
   const [added, setAdded] = useState(alreadyInCart);
   const router = useRouter();
@@ -58,17 +58,17 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
       ) : added && isSecondary ? (
         <>
           <Check size={16} className="text-green-400" />
-          <span className="text-green-400">Added to Cart</span>
+          <span className="text-green-400">{dict.added_to_cart || "Added to Cart"}</span>
         </>
       ) : isSecondary ? (
         <>
           <Plus size={16} />
-          Add to Cart
+          {dict.add_to_cart || "Add to Cart"}
         </>
       ) : (
         <>
           <ShoppingCart size={16} />
-          Buy Now
+          {dict.buy_now || "Buy Now"}
         </>
       )}
     </button>

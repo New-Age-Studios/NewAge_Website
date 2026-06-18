@@ -5,8 +5,9 @@ import Link from "next/link";
 import { ShoppingCart, Check, Trash2, ShieldCheck, Gift } from "lucide-react";
 import { goToCheckout, removePackage, applyCoupon, removeCoupon } from "@/app/actions/cart";
 import { useRouter } from "next/navigation";
+import { parseLocalizedDescription } from "@/lib/tebex";
 
-export default function CartClient({ initialBasket, suggestedProducts, allPackages }) {
+export default function CartClient({ initialBasket, suggestedProducts, allPackages, dict = {}, lang = "en" }) {
   const router = useRouter();
   const [basket, setBasket] = useState(initialBasket);
   const [isPending, startTransition] = useTransition();
@@ -82,10 +83,10 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
         {/* Header */}
         <div className="flex items-end justify-between border-b border-white/10 pb-6 mb-10">
           <h1 style={{ fontSize: "2.5rem", fontWeight: 800, color: "#f2f2f2", fontFamily: "'Barlow', sans-serif", letterSpacing: "-0.02em" }}>
-            Cart
+            {dict.title || "Cart"}
           </h1>
           <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>
-            {packages.length} packages
+            {packages.length} {dict.packages || "packages"}
           </span>
         </div>
 
@@ -96,14 +97,14 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
             {packages.length === 0 ? (
               <div className="mb-12">
                 <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 15, marginBottom: 20 }}>
-                  Your basket is empty. Your players are missing out on the ultimate FiveM experience.
+                  {dict.empty || "Your basket is empty. Your players are missing out on the ultimate FiveM experience."}
                 </p>
                 <Link
-                  href="/scripts"
+                  href={`/${lang}/scripts`}
                   className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all hover:brightness-110 active:scale-95"
                   style={{ background: "rgba(249,115,22,0.15)", color: "#f97316", border: "1px solid rgba(249,115,22,0.3)" }}
                 >
-                  Browse Scripts
+                  {dict.browse_scripts || "Browse Scripts"}
                   <ChevronRight size={14} />
                 </Link>
               </div>
@@ -120,7 +121,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                     </div>
                     <div className="flex-1 flex flex-col justify-center min-w-0 pr-10">
                       <p className="text-xl font-extrabold text-white mb-1 truncate tracking-tight">{pkg.package?.name || pkg.name || 'Unknown Item'}</p>
-                      <p className="text-sm font-semibold text-orange-400/70 mb-2">FiveM Script</p>
+                      <p className="text-sm font-semibold text-orange-400/70 mb-2">{dict.fivem_script || "FiveM Script"}</p>
                       <div className="flex items-center gap-3">
                         <span className="text-lg font-bold text-orange-500">
                           {itemPrice === 0 ? "FREE" : `$${itemPrice}`}
@@ -144,10 +145,10 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
             {/* Upsell Section */}
             <div>
               <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#f2f2f2", fontFamily: "'Barlow', sans-serif", marginBottom: 8 }}>
-                Make Your Server Perfect.
+                {dict.make_perfect || "Make Your Server Perfect."}
               </h2>
               <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, marginBottom: 24 }}>
-                Our scripts are built to complement each other. Add more now for a smoother, more immersive server — your players will thank you.
+                {dict.make_perfect_desc || "Our scripts are built to complement each other. Add more now for a smoother, more immersive server — your players will thank you."}
               </p>
               
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -163,15 +164,15 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                         <p className="text-sm font-bold text-white/50">{product.total_price === 0 ? "FREE" : `$${product.total_price}`}</p>
                       </div>
                       <p className="text-xs text-white/40 mb-4 line-clamp-3 leading-relaxed flex-1">
-                        {product.description?.replace(/<[^>]*>?/gm, '')}
+                        {parseLocalizedDescription(product.description, lang)?.replace(/<[^>]*>?/gm, '')}
                       </p>
                       <Link
-                        href={`/scripts/${product.id}`}
+                        href={`/${lang}/scripts/${product.id}`}
                         className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-colors hover:bg-white/10"
                         style={{ border: "1px solid rgba(249,115,22,0.4)", color: "#f97316" }}
                       >
                         <ShoppingCart size={14} />
-                        View Script
+                        {dict.view_script || "View Script"}
                       </Link>
                     </div>
                   </div>
@@ -187,12 +188,12 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
             <div className="rounded-2xl p-5" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
               <div className="flex items-center gap-2 mb-4">
                 <Gift size={16} className="text-white/70" />
-                <span className="text-sm font-bold text-white">Apply Coupon</span>
+                <span className="text-sm font-bold text-white">{dict.apply_coupon || "Apply Coupon"}</span>
               </div>
               <div className="flex gap-0 rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
                 <input 
                   type="text" 
-                  placeholder="Enter coupon" 
+                  placeholder={dict.enter_coupon || "Enter coupon"}
                   value={couponCode}
                   onChange={(e) => setCouponCode(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleApplyCoupon()}
@@ -205,7 +206,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                   className="px-4 py-2.5 text-sm font-bold transition-colors hover:brightness-110 disabled:opacity-50" 
                   style={{ background: "rgba(249,115,22,0.15)", color: "#f97316" }}
                 >
-                  {applyingCoupon ? "..." : "Apply"}
+                  {applyingCoupon ? "..." : (dict.apply || "Apply")}
                 </button>
               </div>
               {couponError && (
@@ -233,28 +234,28 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
 
             {/* Cart Summary */}
             <div className="rounded-2xl p-6" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
-              <h3 className="text-lg font-bold text-white mb-5">Cart Summary</h3>
+              <h3 className="text-lg font-bold text-white mb-5">{dict.summary || "Cart Summary"}</h3>
               
               <div className="flex flex-col gap-3 mb-6 pb-6 border-b border-white/5">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-white/50">Sub total</span>
+                  <span className="text-sm text-white/50">{dict.sub_total || "Sub total"}</span>
                   <span className="text-sm text-white/80">{packages.length === 0 ? "$0" : totalPrice === 0 ? "Free" : `$${totalPrice}`}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-white/50">Sales Tax</span>
+                  <span className="text-sm text-white/50">{dict.sales_tax || "Sales Tax"}</span>
                   <span className="text-sm text-white/80">{packages.length === 0 ? "$0" : "Free"}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between items-center text-orange-400">
-                    <span className="text-sm font-bold">Discount</span>
+                    <span className="text-sm font-bold">{dict.discount || "Discount"}</span>
                     <span className="text-sm font-bold">-${discount}</span>
                   </div>
                 )}
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-base font-bold text-white">Total Price</span>
+                  <span className="text-base font-bold text-white">{dict.total_price || "Total Price"}</span>
                   <span className="text-lg font-bold text-white">{packages.length === 0 ? "$0" : totalPrice === 0 ? "Free" : `$${totalPrice}`}</span>
                 </div>
-                <p className="text-xs text-white/30 text-right mt-1">USD estimated; charged at checkout</p>
+                <p className="text-xs text-white/30 text-right mt-1">{dict.estimated || "USD estimated; charged at checkout"}</p>
               </div>
 
               <button
@@ -271,13 +272,13 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                 ) : (
                   <>
                     <ShieldCheck size={16} />
-                    Secure Checkout
+                    {dict.secure_checkout || "Secure Checkout"}
                   </>
                 )}
               </button>
 
               <div className="flex items-center justify-center mb-6">
-                <img src="/we-accept.webp" alt="Payment Methods" className="h-6 object-contain opacity-80" />
+                <img src="/pagamentos.png" alt="Payment Methods" className="h-6 object-contain opacity-80" />
               </div>
 
               <div className="flex flex-col items-center justify-center gap-2 text-center">

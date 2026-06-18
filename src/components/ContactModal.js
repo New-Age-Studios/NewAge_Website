@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Mail, X, Send } from "lucide-react";
 
-export default function ContactModal() {
+export default function ContactModal({ dict = {} }) {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -54,7 +54,7 @@ export default function ContactModal() {
         style={{ borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)" }}
       >
         <Mail size={18} />
-        Send Email
+        {dict.send_email || "Send Email"}
       </button>
 
       {isOpen && (
@@ -69,7 +69,7 @@ export default function ContactModal() {
             style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.1)" }}
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-white">Contact Us</h2>
+              <h2 className="text-2xl font-bold text-white">{dict.email_modal?.title || "Contact Us"}</h2>
               <button 
                 onClick={() => setIsOpen(false)}
                 className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-colors"
@@ -83,9 +83,7 @@ export default function ContactModal() {
               <div style={{ color: "#f97316" }} className="mt-0.5 shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
               </div>
-              <p className="text-white/70 leading-relaxed">
-                <strong className="text-white">Note:</strong> Email replies can take up to <strong className="text-orange-400">1 week</strong>. For a faster response, we highly recommend opening a ticket on our Discord server.
-              </p>
+              <p className="text-white/70 leading-relaxed" dangerouslySetInnerHTML={{ __html: dict.email_modal?.warning || "<strong>Note:</strong> Email replies can take up to <strong class='text-orange-400'>1 week</strong>. For a faster response, we highly recommend opening a ticket on our Discord server." }} />
             </div>
 
             {success ? (
@@ -93,13 +91,13 @@ export default function ContactModal() {
                 <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mb-4">
                   <Send size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-white/60">We've received your email and will get back to you shortly.</p>
+                <h3 className="text-xl font-bold text-white mb-2">{dict.email_modal?.success_title || "Message Sent!"}</h3>
+                <p className="text-white/60">{dict.email_modal?.success_desc || "We've received your email and will get back to you shortly."}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-1.5">Your Email</label>
+                  <label className="block text-sm font-medium text-white/70 mb-1.5">{dict.email_modal?.your_email || "Your Email"}</label>
                   <input 
                     name="email"
                     type="email" 
@@ -111,7 +109,7 @@ export default function ContactModal() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-1.5">Subject</label>
+                  <label className="block text-sm font-medium text-white/70 mb-1.5">{dict.email_modal?.subject || "Subject"}</label>
                   <input 
                     name="subject"
                     type="text" 
@@ -123,7 +121,7 @@ export default function ContactModal() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-1.5">Message</label>
+                  <label className="block text-sm font-medium text-white/70 mb-1.5">{dict.email_modal?.message || "Message"}</label>
                   <textarea 
                     name="message"
                     required
@@ -147,7 +145,7 @@ export default function ContactModal() {
                     </svg>
                   ) : (
                     <>
-                      <Send size={18} /> Send Message
+                      <Send size={18} /> {dict.email_modal?.send || "Send Message"}
                     </>
                   )}
                 </button>

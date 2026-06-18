@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { ChevronRight, Check } from "lucide-react";
-import { getPackage, getPackages } from "@/lib/tebex";
+import { getPackage, getPackages, parseLocalizedDescription } from "@/lib/tebex";
 import { getBasketData } from "@/app/actions/cart";
 import ClientAddToCart from "@/components/ClientAddToCart";
 import ProductGallery from "@/components/ProductGallery";
+import { getDictionary } from "@/dictionaries";
 
 export default async function ProductPage({ params }) {
-  const { id } = await params;
+  const { id, lang } = await params;
   const product = await getPackage(id);
   const products = await getPackages();
   const basket = await getBasketData();
+  const dict = await getDictionary(lang);
 
   const inCart = basket?.packages?.some(p => (p.package?.id || p.id) === product.id) || false;
 
@@ -17,8 +19,8 @@ export default async function ProductPage({ params }) {
     return (
       <div style={{ background: "#0a0a0a", minHeight: "100vh", paddingTop: 80, fontFamily: "'Inter', sans-serif" }} className="flex items-center justify-center">
         <div className="text-center">
-          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Product not found.</p>
-          <Link href="/scripts" style={{ color: "#f97316", fontSize: 14, marginTop: 12, display: "inline-block" }}>← Back to Scripts</Link>
+          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>{dict.product.not_found}</p>
+          <Link href={`/${lang}/scripts`} style={{ color: "#f97316", fontSize: 14, marginTop: 12, display: "inline-block" }}>{dict.product.back_to_scripts}</Link>
         </div>
       </div>
     );
@@ -29,9 +31,9 @@ export default async function ProductPage({ params }) {
       <div className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 mb-8 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <Link href={`/${lang}`} className="hover:text-white transition-colors">{dict.navbar?.home || "Home"}</Link>
           <ChevronRight size={12} />
-          <Link href={`/scripts?category=${encodeURIComponent(product.category?.name || 'All')}`} className="hover:text-white transition-colors">{product.category?.name || "Scripts"}</Link>
+          <Link href={`/${lang}/scripts?category=${encodeURIComponent(product.category?.name || 'All')}`} className="hover:text-white transition-colors">{product.category?.name || "Scripts"}</Link>
           <ChevronRight size={12} />
           <span style={{ color: "rgba(255,255,255,0.7)" }}>{product.name}</span>
         </nav>
@@ -49,7 +51,7 @@ export default async function ProductPage({ params }) {
               <div 
                 className="tebex-description"
                 style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, lineHeight: 1.75 }}
-                dangerouslySetInnerHTML={{ __html: product.description }} 
+                dangerouslySetInnerHTML={{ __html: parseLocalizedDescription(product.description, lang) }} 
               />
             </div>
           </div>
@@ -80,20 +82,20 @@ export default async function ProductPage({ params }) {
                 className="mb-6"
                 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#f97316", fontFamily: "'Barlow', sans-serif" }}
               >
-                {product.total_price === 0 ? "FREE" : `$${product.total_price}`}
+                {product.total_price === 0 ? dict.product.free : `$${product.total_price}`}
               </p>
 
               <div className="flex flex-col gap-0">
-                <ClientAddToCart packageId={product.id} returnPath={`/scripts/${product.id}`} />
-                <ClientAddToCart packageId={product.id} returnPath={`/scripts/${product.id}`} isSecondary={true} alreadyInCart={inCart} />
+                <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} dict={dict.product} />
+                <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} isSecondary={true} alreadyInCart={inCart} dict={dict.product} />
               </div>
 
               <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
                 <div className="flex flex-col gap-3">
                   {[
-                    { label: "Instant delivery", detail: "Via Tebex automated system" },
-                    { label: "Free lifetime updates", detail: "Always on the latest version" },
-                    { label: "24/7 support", detail: "Discord community & docs" },
+                    { label: dict.product.instant_delivery, detail: dict.product.instant_delivery_desc },
+                    { label: dict.product.free_updates, detail: dict.product.free_updates_desc },
+                    { label: dict.product.support_24_7, detail: dict.product.support_24_7_desc },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-2.5">
                       <div
@@ -115,13 +117,13 @@ export default async function ProductPage({ params }) {
             {/* Related scripts */}
             <div className="mt-4 rounded-2xl p-5" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
               <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                More Scripts
+                {dict.product.more_scripts}
               </p>
               <div className="flex flex-col gap-2">
                 {products.filter((p) => p.id !== product.id).slice(0, 3).map((p) => (
                   <Link
                     key={p.id}
-                    href={`/scripts/${p.id}`}
+                    href={`/${lang}/scripts/${p.id}`}
                     className="flex items-center gap-3 rounded-xl p-2.5 transition-colors hover:bg-white/5"
                   >
                     <div
@@ -132,7 +134,7 @@ export default async function ProductPage({ params }) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs truncate" style={{ color: "#f2f2f2", fontWeight: 600 }}>{p.name}</p>
-                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{p.total_price === 0 ? "FREE" : `$${p.total_price}`}</p>
+                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{p.total_price === 0 ? dict.product.free : `$${p.total_price}`}</p>
                     </div>
                   </Link>
                 ))}

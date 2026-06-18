@@ -1,0 +1,139 @@
+{
+  "navbar": {
+    "home": "Início",
+    "products": "Produtos",
+    "showcase": "Demonstração",
+    "docs": "Documentação",
+    "support": "Suporte",
+    "manageOrders": "Meus Pedidos",
+    "logout": "Sair",
+    "login": "Entrar com FiveM"
+  },
+  "home": {
+    "badge": "NEW AGE STUDIOS — MAPEAMENTO FIVEM",
+    "title_part1": "Transforme a ",
+    "title_part2": "energia do seu ",
+    "title_highlight": "servidor",
+    "subtitle": "O estúdio focado em levar máxima imersão, qualidade visual e alta performance para revolucionar o mundo do Roleplay no FiveM.",
+    "explore_btn": "EXPLORAR PRODUTOS",
+    "join_discord": "ENTRAR NO DISCORD",
+    "features": {
+      "instant_title": "Entrega Imediata",
+      "instant_desc": "Disponível em minutos na sua conta do Cfx.re Portal.",
+      "updates_title": "Atualizações Gratuitas",
+      "updates_desc": "Garantimos que nunca cobraremos por uma atualização, nem mesmo a v2.",
+      "secure_title": "Seguro & Otimizado",
+      "secure_desc": "Baixo uso de resmon, eventos protegidos e projetado para escalar.",
+      "setup_title": "Fácil Instalação",
+      "setup_desc": "Instalação rápida e fácil, com suporte disponível 24/7."
+    },
+    "best_sellers": "Mais Vendidos",
+    "free": "GRÁTIS",
+    "view_all": "Ver Todos"
+  },
+  "showcase": {
+    "live_server": "Servidor Ao Vivo",
+    "title_part1": "Experimente Nossos",
+    "title_part2": "Scripts na Prática.",
+    "subtitle": "Não acredite apenas na nossa palavra. Conecte-se ao servidor oficial da New Age Studios e teste todos os nossos scripts premium em um ambiente FiveM real antes de comprar.",
+    "connect_btn": "Conectar ao Servidor",
+    "requires_fivem": "Requer que o FiveM esteja instalado e aberto no seu PC.",
+    "features": {
+      "updated_title": "Sempre Atualizado",
+      "updated_desc": "Nosso servidor de demonstração roda as versões mais recentes de todos os nossos scripts, para que você experimente exatamente o que está comprando.",
+      "safe_title": "Testes Seguros",
+      "safe_desc": "Teste permissões, recursos de admin e interações em um ambiente seguro e isolado construído especificamente para demonstrações.",
+      "more_coming": "Mais novidades em breve..."
+    }
+  },
+  "footer": {
+    "trusted_title": "Confiado pelos melhores",
+    "trusted_desc": "Somos a escolha de confiança das comunidades mais populares e conhecidas.",
+    "powered_by": "Processado por",
+    "about": "O estúdio focado em levar máxima imersão, qualidade visual e alta performance para revolucionar o mundo do Roleplay no FiveM.",
+    "currency": "Moeda:",
+    "cols": {
+      "pages": "Páginas",
+      "legal": "Legal",
+      "socials": "Redes Sociais",
+      "more": "Mais da New Age"
+    },
+    "links": {
+      "home": "Início",
+      "products": "Produtos",
+      "cart": "Carrinho",
+      "terms": "Termos de Venda",
+      "privacy": "Política de Privacidade",
+      "refunds": "Reembolsos",
+      "impressum": "Tebex Impressum",
+      "discord": "Discord",
+      "cfx": "Perfil Cfx.re",
+      "github": "GitHub",
+      "youtube": "YouTube",
+      "blog": "Blog",
+      "map_packages": "Pacotes de Mapas",
+      "community": "Comunidade"
+    },
+    "copyright": "Copyright © 2026, New Age Studios. Não somos afiliados ou endossados pela Rockstar North, Take-Two Interactive ou outros detentores de direitos. FiveM é um direito autoral e marca registrada da Take-Two Interactive Software, Inc. Nosso processo de checkout é de propriedade e operado pela Tebex Limited, que lida com o atendimento do produto, suporte de faturamento e reembolsos. Os preços exibidos podem ser estimativas usando uma taxa de conversão atualizada uma vez por dia. O checkout será sempre em USD, GBP, EUR, CAD, AUD ou BRL; portanto, o preço final pode diferir dependendo da taxa de câmbio do banco/processador de pagamento."
+  },
+  "support": {
+    "badge": "Suporte 24/7",
+    "title_part1": "Precisa de Ajuda?",
+    "title_part2": "Nós ajudamos você.",
+    "subtitle": "A maneira absolutamente mais rápida de resolver seu problema é entrando em nossa comunidade do Discord e abrindo um ticket de suporte. Nossa equipe está sempre pronta para ajudar o mais rápido possível!",
+    "join_discord": "Entrar no Discord",
+    "send_email": "Enviar E-mail",
+    "step1_title": "Entre no servidor",
+    "step1_desc": "Use o botão acima para entrar no nosso servidor oficial do Discord.",
+    "step2_title": "Abra um ticket",
+    "step2_desc": "Vá até o canal de suporte, abra um ticket, e te ajudaremos instantaneamente.",
+    "go_to_channel": "Ir para o Canal",
+    "live_status": "Status ao Vivo",
+    "email_modal": {
+      "title": "Fale Conosco",
+      "warning": "Atenção: Respostas por e-mail podem demorar até 1 semana. Para um atendimento mais rápido, recomendamos abrir um ticket em nosso servidor do Discord.",
+      "your_email": "Seu E-mail",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success_title": "Mensagem Enviada!",
+      "success_desc": "Recebemos seu e-mail e retornaremos o mais breve possível. Lembre-se, o Discord é mais rápido!"
+    }
+  },
+  "product": {
+    "buy_now": "Comprar Agora",
+    "add_to_cart": "Adicionar ao Carrinho",
+    "added_to_cart": "Adicionado ao Carrinho",
+    "free": "GRÁTIS",
+    "back_to_scripts": "← Voltar para Produtos",
+    "not_found": "Produto não encontrado.",
+    "more_scripts": "Mais Produtos",
+    "instant_delivery": "Entrega imediata",
+    "instant_delivery_desc": "Via sistema automatizado Tebex",
+    "free_updates": "Atualizações gratuitas",
+    "free_updates_desc": "Sempre na última versão",
+    "support_24_7": "Suporte 24/7",
+    "support_24_7_desc": "Comunidade do Discord e documentação"
+  },
+  "cart": {
+    "title": "Carrinho",
+    "packages": "itens",
+    "empty": "Seu carrinho está vazio. Seus jogadores estão perdendo a melhor experiência do FiveM.",
+    "browse_scripts": "Explorar Produtos",
+    "fivem_script": "Script de FiveM",
+    "make_perfect": "Deixe seu Servidor Perfeito.",
+    "make_perfect_desc": "Nossos scripts foram criados para se complementarem. Adicione mais agora para um servidor mais fluído e imersivo — seus jogadores agradecerão.",
+    "view_script": "Ver Produto",
+    "apply_coupon": "Aplicar Cupom",
+    "enter_coupon": "Inserir cupom",
+    "apply": "Aplicar",
+    "summary": "Resumo do Carrinho",
+    "sub_total": "Subtotal",
+    "sales_tax": "Impostos",
+    "discount": "Desconto",
+    "total_price": "Preço Total",
+    "estimated": "Estimado em USD; cobrado no checkout",
+    "secure_checkout": "Checkout Seguro"
+  }
+}

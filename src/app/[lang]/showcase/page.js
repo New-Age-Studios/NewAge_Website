@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { ChevronRight, Play, Server, Shield, Zap } from "lucide-react";
+import { getDictionary } from "@/dictionaries";
 
 export const metadata = {
   title: "Showcase Server | NewAge Studios",
 };
 
-export default function ShowcasePage() {
+export default async function ShowcasePage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  
   return (
     <div 
       className="relative overflow-hidden"
@@ -30,9 +34,9 @@ export default function ShowcasePage() {
       <div className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-12 relative z-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 mb-10 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <Link href={`/${lang}`} className="hover:text-white transition-colors">{dict.navbar?.home || "Home"}</Link>
           <ChevronRight size={12} />
-          <span style={{ color: "rgba(255,255,255,0.7)" }}>Showcase</span>
+          <span style={{ color: "rgba(255,255,255,0.7)" }}>{dict.navbar?.showcase || "Showcase"}</span>
         </nav>
 
         <div className="grid lg:grid-cols-[1fr_400px] gap-12 items-center">
@@ -40,16 +44,16 @@ export default function ShowcasePage() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "rgba(249,115,22,0.1)", border: "1px solid rgba(249,115,22,0.2)" }}>
               <Server size={14} className="text-orange-500" />
-              <span className="text-xs font-bold text-orange-500 tracking-wide uppercase">Live Server</span>
+              <span className="text-xs font-bold text-orange-500 tracking-wide uppercase">{dict.showcase.live_server}</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-[1.1]" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              Experience Our <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">Scripts Live.</span>
+              {dict.showcase.title_part1} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">{dict.showcase.title_part2}</span>
             </h1>
             
             <p className="text-lg mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.6)", maxWidth: 500 }}>
-              Don't just take our word for it. Connect to the official New Age Studios showcase server and test all of our premium scripts in a live FiveM environment before you buy.
+              {dict.showcase.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -59,7 +63,7 @@ export default function ShowcasePage() {
                 style={{ background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)" }}
               >
                 <Play size={18} fill="currentColor" />
-                Connect to Server
+                {dict.showcase.connect_btn}
               </a>
               <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-bold" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)" }}>
                 IP: <span className="text-white">cfx.re/join/lerjmz7</span>
@@ -67,7 +71,7 @@ export default function ShowcasePage() {
             </div>
             
             <p className="text-xs mt-4" style={{ color: "rgba(255,255,255,0.3)" }}>
-              Requires FiveM to be installed and running on your PC.
+              {dict.showcase.requires_fivem}
             </p>
           </div>
 
@@ -80,8 +84,8 @@ export default function ShowcasePage() {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(249,115,22,0.1)", color: "#f97316" }}>
                 <Zap size={20} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Always Updated</h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>Our showcase server runs the absolute latest versions of all our scripts, so you experience exactly what you are purchasing.</p>
+              <h3 className="text-lg font-bold text-white mb-2">{dict.showcase.features.updated_title}</h3>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{dict.showcase.features.updated_desc}</p>
             </div>
 
             <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
@@ -89,12 +93,12 @@ export default function ShowcasePage() {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(249,115,22,0.1)", color: "#f97316" }}>
                 <Shield size={20} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Safe Testing</h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>Test permissions, admin features, and player interactions in a safe, isolated environment built specifically for demonstrations.</p>
+              <h3 className="text-lg font-bold text-white mb-2">{dict.showcase.features.safe_title}</h3>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{dict.showcase.features.safe_desc}</p>
             </div>
             
             <div className="p-6 rounded-2xl relative overflow-hidden opacity-50" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
-               <h3 className="text-lg font-bold text-white mb-2">More coming soon...</h3>
+               <h3 className="text-lg font-bold text-white mb-2">{dict.showcase.features.more_coming}</h3>
             </div>
           </div>
         </div>

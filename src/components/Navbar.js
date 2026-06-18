@@ -2,19 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Menu, X, ChevronDown, History, LogOut } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown, History, LogOut, Globe } from "lucide-react";
 import { useState, useTransition, useEffect, useRef } from "react";
 import { initiateLogin, getBasketData, logout, getAvailableAuthMethods } from "@/app/actions/cart";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/scripts" },
-  { label: "Showcase", href: "/showcase" },
-  { label: "Docs", href: "https://newagestudios.gitbook.io/home" },
-  { label: "Support", href: "/support" },
-];
-
-export default function Navbar() {
+export default function Navbar({ lang = "en", dict = {} }) {
+  const navLinks = [
+    { label: dict.home || "Home", href: `/${lang}` },
+    { label: dict.products || "Products", href: `/${lang}/scripts` },
+    { label: dict.showcase || "Showcase", href: `/${lang}/showcase` },
+    { label: dict.docs || "Docs", href: "https://newagestudios.gitbook.io/home" },
+    { label: dict.support || "Support", href: `/${lang}/support` },
+  ];
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -90,8 +89,8 @@ export default function Navbar() {
 
         <div className="relative flex items-center justify-between w-full max-w-[1200px] mx-auto">
           {/* Logo (Left) */}
-          <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center shrink-0">
+          <div className="flex justify-start shrink-0 w-[180px] lg:w-[220px]">
+            <Link href={`/${lang}`} className="flex items-center shrink-0">
               <img 
                 src="/na-studios.svg" 
                 alt="New Age Studios" 
@@ -102,7 +101,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop links (Center) */}
-          <div className="hidden md:flex items-center justify-center gap-2 flex-1">
+          <div className="hidden md:flex items-center justify-center gap-1 lg:gap-2 flex-1 px-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -122,7 +121,42 @@ export default function Navbar() {
           </div>
 
           {/* Right side (Right) */}
-          <div className="hidden md:flex items-center justify-end gap-3 flex-1 relative" ref={dropdownRef}>
+          <div className="hidden md:flex items-center justify-end gap-3 shrink-0 relative w-[240px] lg:w-[320px]" ref={dropdownRef}>
+            
+            {/* Language Switcher */}
+            <div className="relative group">
+              <button 
+                className="flex items-center gap-1.5 p-2 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                title="Switch Language"
+              >
+                <Globe size={18} />
+                <span className="text-sm font-semibold uppercase">{lang === 'pt-br' ? 'PT' : 'EN'}</span>
+              </button>
+              <div className="absolute top-full right-0 mt-2 w-32 rounded-xl shadow-2xl py-2 flex flex-col opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                   style={{ background: "#1f1f1f", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <button 
+                  onClick={() => {
+                    document.cookie = "NEXT_LOCALE=en; path=/; max-age=31536000";
+                    window.location.href = window.location.pathname.replace(/^(\/(en|pt-br))/, '/en');
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-white/10"
+                  style={{ color: lang === 'en' ? '#f97316' : '#fff' }}
+                >
+                  English
+                </button>
+                <button 
+                  onClick={() => {
+                    document.cookie = "NEXT_LOCALE=pt-br; path=/; max-age=31536000";
+                    window.location.href = window.location.pathname.replace(/^(\/(en|pt-br))/, '/pt-br');
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-white/10"
+                  style={{ color: lang === 'pt-br' ? '#f97316' : '#fff' }}
+                >
+                  Português
+                </button>
+              </div>
+            </div>
+
             {username ? (
               <div className="relative flex items-center gap-2">
                 {/* User Button */}
@@ -194,7 +228,7 @@ export default function Navbar() {
                 <button
                   onClick={handleLogin}
                   disabled={isPending}
-                  className="flex items-center gap-2 rounded-xl px-5 py-2.5 text-base font-semibold transition-colors hover:bg-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 rounded-xl px-5 py-2.5 text-base font-semibold whitespace-nowrap transition-colors hover:bg-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{ background: "rgba(255,255,255,0.15)", color: "#ffffff", cursor: isPending ? "not-allowed" : "pointer" }}
                 >
                   {isPending ? (
@@ -203,9 +237,7 @@ export default function Navbar() {
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                   ) : (
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                      <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z" />
-                    </svg>
+                    <img src="/tebexsmall.svg" alt="Tebex Logo" className="h-5 w-auto object-contain" />
                   )}
                   {isPending ? "Connecting..." : "Login with FiveM"}
                 </button>

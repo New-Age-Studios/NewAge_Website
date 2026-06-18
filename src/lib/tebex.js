@@ -5,6 +5,31 @@ const BASE_URL = `https://headless.tebex.io/api/accounts/${TEBEX_TOKEN}`;
  * Simulador da Tebex Headless API foi substituído pela API real.
  */
 
+export function parseLocalizedDescription(html, lang) {
+  if (!html) return "";
+  
+  // Busca o conteúdo entre [LANG] e [/LANG], case-insensitive, ignorando quebras de linha
+  const regex = new RegExp(`\\[${lang}\\](.*?)\\[\\/${lang}\\]`, 'is');
+  const match = html.match(regex);
+  
+  if (match && match[1]) {
+    return match[1].trim();
+  }
+  
+  // Fallback para inglês caso o idioma atual não seja encontrado nas tags
+  if (lang.toLowerCase() !== 'en') {
+    const enRegex = new RegExp(`\\[en\\](.*?)\\[\\/en\\]`, 'is');
+    const enMatch = html.match(enRegex);
+    if (enMatch && enMatch[1]) {
+      return enMatch[1].trim();
+    }
+  }
+
+  // Se o texto não possui tags (produtos antigos/ainda não atualizados), 
+  // retornamos a descrição original inteira para não ficar vazio.
+  return html;
+}
+
 export async function getPackages() {
   const res = await fetch(`${BASE_URL}/packages`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to fetch packages from Tebex');
