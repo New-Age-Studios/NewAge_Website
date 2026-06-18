@@ -8,6 +8,7 @@ import { initiateLogin, getBasketData, logout, getAvailableAuthMethods } from "@
 
 const navLinks = [
   { label: "Products", href: "/scripts" },
+  { label: "Showcase", href: "/showcase" },
   { label: "Docs", href: "https://newagestudios.gitbook.io/home" },
   { label: "Support", href: "/support" },
 ];
