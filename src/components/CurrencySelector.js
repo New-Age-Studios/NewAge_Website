@@ -43,7 +43,7 @@ export default function CurrencySelector({ initialCurrencyCode = "USD" }) {
         <div 
           className="absolute bottom-full left-0 mb-2 w-48 rounded-xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-bottom-2 duration-200"
           style={{ 
-            background: "#141414", 
+            background: "#191919", 
             border: "1px solid rgba(255,255,255,0.1)",
             zIndex: 50
           }}

@@ -66,7 +66,7 @@ export default function ContactModal({ dict = {} }) {
           
           <div 
             className="relative w-full max-w-lg rounded-2xl p-6 shadow-2xl animate-modal-pop"
-            style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.1)" }}
+            style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.1)" }}
           >
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-white">{dict.email_modal?.title || "Contact Us"}</h2>

@@ -79,7 +79,7 @@ export default async function ShowcasePage({ params }) {
           <div className="flex flex-col gap-4 relative">
             <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent z-10 pointer-events-none" />
             
-            <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
+            <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.05)" }}>
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(249,115,22,0.1)", color: "#f97316" }}>
                 <Zap size={20} />
@@ -88,7 +88,7 @@ export default async function ShowcasePage({ params }) {
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{dict.showcase.features.updated_desc}</p>
             </div>
 
-            <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
+            <div className="p-6 rounded-2xl relative overflow-hidden group" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.05)" }}>
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(249,115,22,0.1)", color: "#f97316" }}>
                 <Shield size={20} />
@@ -97,7 +97,7 @@ export default async function ShowcasePage({ params }) {
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{dict.showcase.features.safe_desc}</p>
             </div>
             
-            <div className="p-6 rounded-2xl relative overflow-hidden opacity-50" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.05)" }}>
+            <div className="p-6 rounded-2xl relative overflow-hidden opacity-50" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.05)" }}>
                <h3 className="text-lg font-bold text-white mb-2">{dict.showcase.features.more_coming}</h3>
             </div>
           </div>

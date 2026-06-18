@@ -153,7 +153,7 @@ export default async function Home({ params }) {
                 key={product.id}
                 href={`/${lang}/scripts/${product.id}`}
                 className="group block rounded-2xl overflow-hidden transition-transform duration-200 hover:-translate-y-1"
-                style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}
+                style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 {/* Thumbnail */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>

@@ -51,7 +51,7 @@ export default async function ProductPage({ params }) {
             {/* Description */}
             <div
               className="rounded-2xl p-6 mb-6"
-              style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}
+              style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
             >
               <div 
                 className="tebex-description"
@@ -65,7 +65,7 @@ export default async function ProductPage({ params }) {
           <div className="lg:sticky" style={{ top: 90 }}>
             <div
               className="rounded-2xl p-6"
-              style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}
+              style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
             >
               <h1
                 className="mb-1"
@@ -120,7 +120,7 @@ export default async function ProductPage({ params }) {
             </div>
 
             {/* Related scripts */}
-            <div className="mt-4 rounded-2xl p-5" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div className="mt-4 rounded-2xl p-5" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}>
               <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 {dict.product.more_scripts}
               </p>

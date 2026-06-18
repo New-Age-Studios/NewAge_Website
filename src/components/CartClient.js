@@ -116,7 +116,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                   const storeProduct = allPackages?.find(p => p.id === pkgId);
                   const itemPrice = storeProduct?.total_price ?? storeProduct?.base_price ?? pkg.total_price ?? pkg.package?.total_price ?? pkg.price ?? pkg.base_price ?? 0;
                   return (
-                  <div key={i} className="flex gap-5 p-5 rounded-2xl relative transition-transform hover:scale-[1.01]" style={{ background: "linear-gradient(145deg, #141414, #1a1a1a)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
+                  <div key={i} className="flex gap-5 p-5 rounded-2xl relative transition-transform hover:scale-[1.01]" style={{ background: "linear-gradient(145deg, #191919, #222222)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
                     <div className="w-32 h-24 rounded-xl bg-black/50 overflow-hidden relative shrink-0 border border-white/5">
                       <img src={pkg.package?.image || pkg.image || '/na-studios.svg'} alt={pkg.package?.name || pkg.name || 'Product'} className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform hover:scale-110 duration-500" />
                     </div>
@@ -154,7 +154,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
               
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {suggestedProducts.slice(0, 3).map((product) => (
-                  <div key={product.id} className="rounded-2xl overflow-hidden flex flex-col" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
+                  <div key={product.id} className="rounded-2xl overflow-hidden flex flex-col" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}>
                     <div className="relative overflow-hidden w-full h-32">
                       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)" }} />
                       <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-60" />
@@ -186,7 +186,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
           <div className="flex flex-col gap-6">
             
             {/* Coupon Block */}
-            <div className="rounded-2xl p-5" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div className="rounded-2xl p-5" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}>
               <div className="flex items-center gap-2 mb-4">
                 <Gift size={16} className="text-white/70" />
                 <span className="text-sm font-bold text-white">{dict.apply_coupon || "Apply Coupon"}</span>
@@ -234,7 +234,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
             </div>
 
             {/* Cart Summary */}
-            <div className="rounded-2xl p-6" style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div className="rounded-2xl p-6" style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}>
               <h3 className="text-lg font-bold text-white mb-5">{dict.summary || "Cart Summary"}</h3>
               
               <div className="flex flex-col gap-3 mb-6 pb-6 border-b border-white/5">
