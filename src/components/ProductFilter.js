@@ -61,9 +61,9 @@ export default function ProductFilter({ products, currencyCode = "USD", rates = 
             style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
           >
             {/* Thumbnail */}
-            <div className="relative overflow-hidden transform-gpu" style={{ aspectRatio: "16/9" }}>
+            <div className="relative overflow-hidden transform-gpu z-10" style={{ aspectRatio: "16/9" }}>
               <div
-                className="absolute -inset-px z-10 pointer-events-none"
+                className="absolute inset-0 z-10 pointer-events-none"
                 style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)" }}
               />
               <img
@@ -71,11 +71,10 @@ export default function ProductFilter({ products, currencyCode = "USD", rates = 
                 alt={product.name}
                 className="absolute inset-0 z-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191919] z-20 pointer-events-none" />
             </div>
 
             {/* Info */}
-            <div className="p-4 flex items-center justify-between">
+            <div className="p-4 flex items-center justify-between relative z-20 bg-[#191919] -mt-[2px] rounded-b-2xl">
               <div>
                 <p className="text-sm" style={{ color: "#f2f2f2", fontWeight: 600 }}>{product.name}</p>
                 <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>{product.category?.name || "SCRIPT"}</p>

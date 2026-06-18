@@ -156,17 +156,16 @@ export default async function Home({ params }) {
                 style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 {/* Thumbnail */}
-                <div className="relative overflow-hidden transform-gpu" style={{ aspectRatio: "16/9" }}>
+                <div className="relative overflow-hidden transform-gpu z-10" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={product.image}
                     alt={product.name}
                     className="absolute inset-0 z-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191919] z-20 pointer-events-none" />
                 </div>
 
                 {/* Info */}
-                <div className="p-5 flex flex-col gap-3">
+                <div className="p-5 flex flex-col gap-3 relative z-20 bg-[#191919] -mt-[2px] rounded-b-2xl">
                   <span
                     className="text-[10px] px-2 py-0.5 rounded-sm inline-block self-start"
                     style={{ background: "rgba(249,115,22,0.15)", color: "#f97316", fontWeight: 800, letterSpacing: "0.05em" }}
