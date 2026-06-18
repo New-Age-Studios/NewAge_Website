@@ -42,9 +42,6 @@ export default function TermsPage() {
           </p>
 
           <h2 className="text-xl font-bold text-white mt-12 mb-4">Support</h2>
-          <p className="mb-4">
-            Support is provided primarily via Discord, but is also available via email (see support page). You must have the Customer role in Discord to get support. After purchase, you will receive roles automatically IF you logged in with Discord at the time of purchase. Alternatively, you can use /claim in #✅-claim-roles channel. To claim roles manually with our staff team, you can use the create ticket channel(s).
-          </p>
           <p className="mb-6">
             Support is available 7 days a week to verified customers who have purchased the script through our official store. Leaked, stolen copies of resources from 3rd party sites, or resold scripts are not eligible for support. You must remain a member of the Discord to qualify for lifetime free support. We have a zero-tolerance policy for rudeness or abusive behaviour towards our team. Instances of rudeness or disrespectful behaviour towards our staff may result in temporary timeouts, being refused support, being blacklisted from opening support tickets or, in the most extreme cases, a permanent ban from the server and you will not be able to receive support for your products. This measure is taken to protect our staff from abusive behaviour and to maintain a respectful working environment. We value constructive feedback and are committed to resolving issues amicably and we encourage all customers to communicate respectfully and courteously with our staff to ensure a positive experience for everyone.
           </p>
