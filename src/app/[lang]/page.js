@@ -64,7 +64,7 @@ export default async function Home({ params }) {
         <div 
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.6) 40%, rgba(10,10,10,0) 100%), linear-gradient(to bottom, rgba(10,10,10,0) 60%, rgba(10,10,10,1) 100%)"
+            background: "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.6) 40%, rgba(20,20,20,0) 100%), linear-gradient(to bottom, rgba(20,20,20,0) 60%, rgba(20,20,20,1) 100%)"
           }}
         />
 

@@ -270,7 +270,7 @@ export default function Navbar({ lang = "en", dict = {} }) {
         {mobileOpen && (
           <div
             className="absolute top-full left-0 right-0 flex flex-col py-4 gap-1"
-            style={{ background: "rgba(10,10,10,0.98)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "rgba(20,20,20,0.98)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
           >
             {navLinks.map((link) => (
               <Link
