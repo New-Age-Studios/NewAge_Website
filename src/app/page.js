@@ -63,11 +63,11 @@ export default async function Home() {
           
           {/* Pill Badge */}
           <div 
-            className="inline-block px-4 py-1.5 rounded-full mb-6"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6"
             style={{ background: "rgba(249,115,22,0.2)", border: "1px solid rgba(249,115,22,0.3)" }}
           >
-            <span style={{ color: "#f97316", fontSize: 11, fontWeight: 800, letterSpacing: "0.1em" }}>
-              NEW AGE STUDIOS — MAPEAMENTO FIVEM
+            <span style={{ color: "#f97316", fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", lineHeight: 1, paddingTop: "1px" }}>
+              NEW AGE STUDIOS — FIVEM MAPPING
             </span>
           </div>
 
@@ -75,11 +75,11 @@ export default async function Home() {
             className="text-white leading-[1.05] tracking-tight mb-6 max-w-2xl"
             style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", fontWeight: 900, fontFamily: "'Barlow', sans-serif" }}
           >
-            Transforme a <br/> energia do seu <span style={{ color: "#f97316" }}>servidor</span>
+            Transform the <br/> energy of your <span style={{ color: "#f97316" }}>server</span>
           </h1>
           
           <p className="mb-10 max-w-xl" style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1.6 }}>
-            O estúdio focado em levar máxima imersão, qualidade visual e alta performance para revolucionar o mundo do Roleplay no FiveM.
+            The studio focused on bringing maximum immersion, visual quality, and high performance to revolutionize the world of FiveM Roleplay.
           </p>
 
           <div className="flex items-center gap-4 flex-wrap">
@@ -88,16 +88,7 @@ export default async function Home() {
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-sm text-white font-bold transition-all hover:brightness-110 active:scale-95"
               style={{ background: "#f97316" }}
             >
-              EXPLORAR MAPAS
-            </Link>
-            <Link
-              href="https://discord.gg/newage"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-sm font-bold transition-all hover:bg-white/10 active:scale-95"
-              style={{ background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.2)" }}
-            >
-              ENTRAR NO DISCORD
+              EXPLORE PRODUCTS
             </Link>
           </div>
         </div>
