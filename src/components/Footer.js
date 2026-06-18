@@ -50,7 +50,7 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
   ];
 
   return (
-    <footer style={{ fontFamily: "'Inter', sans-serif", background: "#191919" }}>
+    <footer style={{ fontFamily: "'Inter', sans-serif" }}>
 
       {/* Trusted by the best */}
       <div
@@ -85,10 +85,11 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
       </div>
 
       {/* Main footer */}
-      <div
-        style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
-        className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-12"
-      >
+      <div style={{ background: "#191919" }}>
+        <div
+          style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+          className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-12"
+        >
         <div className="grid lg:grid-cols-[240px_1fr] gap-10">
           {/* Brand */}
           <div>
@@ -159,6 +160,7 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
         <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 11, lineHeight: 1.7 }}>
           {dict.copyright || "Copyright © 2026, New Age Studios. Not affiliated with or endorsed by Rockstar North, Take-Two Interactive or other rights holders. FiveM is a copyright and registered trademark of Take-Two Interactive Software, Inc. Our checkout process is owned & operated by Tebex Limited, who handle product fulfilment, billing support and refunds. Displayed prices may be estimates using a conversion rate updated once per day. Checkout will always be in USD, GBP, EUR, CAD, AUD or BRL; so final price may differ depending on bank/payment processor exchange rate."}
         </p>
+        </div>
       </div>
     </footer>
   );
