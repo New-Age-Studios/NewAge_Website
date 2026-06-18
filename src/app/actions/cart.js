@@ -26,7 +26,7 @@ async function getBasket() {
     }),
   });
 
-  if (!res.ok) throw new Error("Falha ao criar o carrinho na Tebex");
+  if (!res.ok) throw new Error("Failed to create basket on Tebex");
   
   const json = await res.json();
   const newIdent = json.data.ident;
@@ -96,7 +96,7 @@ export async function initiateLogin(returnPath, providerName = "FiveM") {
     const authUrl = targetProvider?.url;
     if (authUrl) redirect(authUrl);
   }
-  throw new Error(`Falha ao puxar tela de login da Tebex para ${providerName}.`);
+  throw new Error(`Failed to load Tebex login screen for ${providerName}.`);
 }
 
 export async function addToCart(formData) {
@@ -126,9 +126,9 @@ export async function addToCart(formData) {
         const authUrl = authJson[0]?.url;
         if (authUrl) redirect(authUrl);
       }
-      throw new Error("Falha ao puxar tela de login da Tebex.");
+      throw new Error("Failed to load Tebex login screen.");
     }
-    throw new Error(json.detail || "Erro ao adicionar ao carrinho.");
+    throw new Error(json.detail || "Error adding item to cart.");
   }
 
   return true;
@@ -140,7 +140,7 @@ export async function goToCheckout() {
   const checkoutJson = await checkoutRes.json();
   const checkoutUrl = checkoutJson.data.links.checkout;
 
-  if (!checkoutUrl) throw new Error("Não foi possível gerar o link de pagamento.");
+  if (!checkoutUrl) throw new Error("Could not generate checkout link.");
 
   const cookieStore = await cookies();
   cookieStore.delete("tebex_basket_ident");
@@ -158,7 +158,7 @@ export async function removePackage(packageId) {
   });
 
   if (!res.ok) {
-    throw new Error("Erro ao remover o pacote do carrinho.");
+    throw new Error("Error removing package from cart.");
   }
 }
 

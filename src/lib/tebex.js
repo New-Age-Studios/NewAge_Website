@@ -13,9 +13,9 @@ export async function getPackages() {
 }
 
 export async function getPackage(id) {
-  // O endpoint /packages/{id} pode não existir diretamente no Headless V1 com public token no path,
-  // mas geralmente puxamos todos e filtramos, ou usamos a API apropriada.
-  // Vamos puxar todos e filtrar, que é seguro e rápido pelo cache da Vercel/Next.js
+  // The /packages/{id} endpoint may not exist directly in Headless V1 with public token in the path,
+  // but we generally fetch all and filter, or use the appropriate API.
+  // Let's fetch all and filter, which is safe and fast due to Vercel/Next.js caching
   const packages = await getPackages();
   return packages.find(pkg => pkg.id.toString() === id.toString());
 }
@@ -31,7 +31,7 @@ export async function createBasket(completeUrl = 'https://newagestudios.tebex.io
   });
   if (!res.ok) throw new Error('Failed to create Tebex basket');
   const json = await res.json();
-  return json.data; // Retorna o objeto basket que contém o 'ident'
+  return json.data; // Returns the basket object containing the 'ident'
 }
 
 export async function addPackageToBasket(basketIdent, packageId, quantity = 1) {
@@ -49,7 +49,7 @@ export async function addPackageToBasket(basketIdent, packageId, quantity = 1) {
 }
 
 export async function getCheckoutUrl(basketIdent) {
-  // Puxa os links do carrinho atualizado ou pelo endpoint de auth
+  // Fetches the links from the updated basket or the auth endpoint
   const res = await fetch(`https://headless.tebex.io/api/baskets/${basketIdent}`);
   if (!res.ok) throw new Error('Failed to fetch basket info');
   const json = await res.json();

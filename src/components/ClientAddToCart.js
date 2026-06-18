@@ -15,7 +15,7 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
   }, [alreadyInCart]);
 
   const handleAdd = () => {
-    if (added && isSecondary) return; // Se já foi adicionado e é o botão secundário, ignora
+    if (added && isSecondary) return; // If already added and it is the secondary button, ignore
 
     startTransition(async () => {
       const formData = new FormData();
@@ -26,11 +26,11 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
         await addToCart(formData);
         
         if (isSecondary) {
-          // Apenas adiciona ao carrinho e atualiza o cabeçalho
+          // Only adds to cart and updates the header
           window.dispatchEvent(new Event("cart-updated"));
           setAdded(true);
         } else {
-          // Buy Now: redireciona
+          // Buy Now: redirects
           router.push("/cart");
         }
       } catch (error) {
