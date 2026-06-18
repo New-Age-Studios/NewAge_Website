@@ -7,6 +7,7 @@ import { useState, useTransition, useEffect, useRef } from "react";
 import { initiateLogin, getBasketData, logout, getAvailableAuthMethods } from "@/app/actions/cart";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Products", href: "/scripts" },
   { label: "Showcase", href: "/showcase" },
   { label: "Docs", href: "https://newagestudios.gitbook.io/home" },
