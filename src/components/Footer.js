@@ -11,7 +11,7 @@ const partnerLogos = [
 // Repeat logos to ensure the track is wide enough to scroll seamlessly
 const carouselLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos];
 
-export default function Footer({ lang = "en", dict = {} }) {
+export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" }) {
   const footerColumns = [
     {
       title: dict.cols?.pages || "Pages",
@@ -116,7 +116,7 @@ export default function Footer({ lang = "en", dict = {} }) {
 
             <div className="mt-5">
               <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, marginBottom: 6 }}>{dict.currency || "Currency:"}</p>
-              <CurrencySelector />
+              <CurrencySelector initialCurrencyCode={currencyCode} />
             </div>
           </div>
 

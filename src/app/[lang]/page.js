@@ -2,6 +2,8 @@ import Link from "next/link";
 import { CloudDownload, Heart, ShieldCheck, Smile, Flame, ArrowRight } from "lucide-react";
 import { getPackages } from "@/lib/tebex";
 import { getDictionary } from "@/dictionaries";
+import { cookies } from "next/headers";
+import { getExchangeRates, formatCurrency } from "@/lib/currency";
 
 const features = [
   {
@@ -29,6 +31,9 @@ const features = [
 export default async function Home({ params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
+  const cookieStore = await cookies();
+  const currencyCode = cookieStore.get("NEXT_CURRENCY")?.value || "USD";
+  const rates = await getExchangeRates();
   
   const products = await getPackages();
   
@@ -171,7 +176,7 @@ export default async function Home({ params }) {
                   <div>
                     <p className="text-lg mb-1" style={{ color: "#f2f2f2", fontWeight: 700 }}>{product.name}</p>
                     <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
-                      {product.total_price === 0 ? dict.home.free : `R$${product.total_price}`}
+                      {product.total_price === 0 ? dict.home.free : formatCurrency(product.total_price, currencyCode, rates)}
                     </p>
                   </div>
                 </div>

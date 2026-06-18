@@ -2,12 +2,13 @@
 
 import { useState, useTransition, useEffect } from "react";
 import Link from "next/link";
-import { ShoppingCart, Check, Trash2, ShieldCheck, Gift } from "lucide-react";
+import { ShoppingCart, Check, Trash2, ShieldCheck, Gift, ChevronRight } from "lucide-react";
 import { goToCheckout, removePackage, applyCoupon, removeCoupon } from "@/app/actions/cart";
 import { useRouter } from "next/navigation";
 import { parseLocalizedDescription } from "@/lib/tebex";
+import { formatCurrency } from "@/lib/currency";
 
-export default function CartClient({ initialBasket, suggestedProducts, allPackages, dict = {}, lang = "en" }) {
+export default function CartClient({ initialBasket, suggestedProducts, allPackages, dict = {}, lang = "en", currencyCode = "USD", rates = {} }) {
   const router = useRouter();
   const [basket, setBasket] = useState(initialBasket);
   const [isPending, startTransition] = useTransition();
@@ -124,7 +125,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                       <p className="text-sm font-semibold text-orange-400/70 mb-2">{dict.fivem_script || "FiveM Script"}</p>
                       <div className="flex items-center gap-3">
                         <span className="text-lg font-bold text-orange-500">
-                          {itemPrice === 0 ? "FREE" : `$${itemPrice}`}
+                          {itemPrice === 0 ? "FREE" : formatCurrency(itemPrice, currencyCode, rates)}
                         </span>
                       </div>
                     </div>
@@ -161,7 +162,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                     <div className="p-4 flex flex-col flex-1">
                       <div className="flex justify-between items-start mb-2">
                         <p className="text-sm font-bold text-white truncate mr-2">{product.name}</p>
-                        <p className="text-sm font-bold text-white/50">{product.total_price === 0 ? "FREE" : `$${product.total_price}`}</p>
+                        <p className="text-sm font-bold text-white/50">{product.total_price === 0 ? "FREE" : formatCurrency(product.total_price, currencyCode, rates)}</p>
                       </div>
                       <p className="text-xs text-white/40 mb-4 line-clamp-3 leading-relaxed flex-1">
                         {parseLocalizedDescription(product.description, lang)?.replace(/<[^>]*>?/gm, '')}
@@ -239,11 +240,11 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
               <div className="flex flex-col gap-3 mb-6 pb-6 border-b border-white/5">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-white/50">{dict.sub_total || "Sub total"}</span>
-                  <span className="text-sm text-white/80">{packages.length === 0 ? "$0" : totalPrice === 0 ? "Free" : `$${totalPrice}`}</span>
+                  <span className="text-sm text-white/80">{packages.length === 0 ? formatCurrency(0, currencyCode, rates) : totalPrice === 0 ? "Free" : formatCurrency(totalPrice, currencyCode, rates)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-white/50">{dict.sales_tax || "Sales Tax"}</span>
-                  <span className="text-sm text-white/80">{packages.length === 0 ? "$0" : "Free"}</span>
+                  <span className="text-sm text-white/80">{packages.length === 0 ? formatCurrency(0, currencyCode, rates) : "Free"}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between items-center text-orange-400">
@@ -253,7 +254,7 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
                 )}
                 <div className="flex justify-between items-center mt-2">
                   <span className="text-base font-bold text-white">{dict.total_price || "Total Price"}</span>
-                  <span className="text-lg font-bold text-white">{packages.length === 0 ? "$0" : totalPrice === 0 ? "Free" : `$${totalPrice}`}</span>
+                  <span className="text-lg font-bold text-white">{packages.length === 0 ? formatCurrency(0, currencyCode, rates) : totalPrice === 0 ? "Free" : formatCurrency(totalPrice, currencyCode, rates)}</span>
                 </div>
                 <p className="text-xs text-white/30 text-right mt-1">{dict.estimated || "USD estimated; charged at checkout"}</p>
               </div>

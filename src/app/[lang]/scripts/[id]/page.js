@@ -5,6 +5,8 @@ import { getBasketData } from "@/app/actions/cart";
 import ClientAddToCart from "@/components/ClientAddToCart";
 import ProductGallery from "@/components/ProductGallery";
 import { getDictionary } from "@/dictionaries";
+import { cookies } from "next/headers";
+import { getExchangeRates, formatCurrency } from "@/lib/currency";
 
 export default async function ProductPage({ params }) {
   const { id, lang } = await params;
@@ -12,6 +14,9 @@ export default async function ProductPage({ params }) {
   const products = await getPackages();
   const basket = await getBasketData();
   const dict = await getDictionary(lang);
+  const cookieStore = await cookies();
+  const currencyCode = cookieStore.get("NEXT_CURRENCY")?.value || "USD";
+  const rates = await getExchangeRates();
 
   const inCart = basket?.packages?.some(p => (p.package?.id || p.id) === product.id) || false;
 
@@ -82,7 +87,7 @@ export default async function ProductPage({ params }) {
                 className="mb-6"
                 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#f97316", fontFamily: "'Barlow', sans-serif" }}
               >
-                {product.total_price === 0 ? dict.product.free : `$${product.total_price}`}
+                {product.total_price === 0 ? dict.product.free : formatCurrency(product.total_price, currencyCode, rates)}
               </p>
 
               <div className="flex flex-col gap-0">
@@ -134,7 +139,7 @@ export default async function ProductPage({ params }) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs truncate" style={{ color: "#f2f2f2", fontWeight: 600 }}>{p.name}</p>
-                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{p.total_price === 0 ? dict.product.free : `$${p.total_price}`}</p>
+                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{p.total_price === 0 ? dict.product.free : formatCurrency(p.total_price, currencyCode, rates)}</p>
                     </div>
                   </Link>
                 ))}

@@ -2,8 +2,16 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getPackages } from "@/lib/tebex";
 import ProductFilter from "@/components/ProductFilter";
+import { cookies } from "next/headers";
+import { getExchangeRates } from "@/lib/currency";
+import { getDictionary } from "@/dictionaries";
 
-export default async function ScriptsPage() {
+export default async function ScriptsPage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  const cookieStore = await cookies();
+  const currencyCode = cookieStore.get("NEXT_CURRENCY")?.value || "USD";
+  const rates = await getExchangeRates();
   const products = await getPackages();
 
   return (
@@ -19,7 +27,7 @@ export default async function ScriptsPage() {
         </h1>
 
         <Suspense fallback={<div className="py-20 text-center text-white/50">Carregando produtos...</div>}>
-          <ProductFilter products={products} />
+          <ProductFilter products={products} currencyCode={currencyCode} rates={rates} dict={dict.product} />
         </Suspense>
       </div>
     </div>

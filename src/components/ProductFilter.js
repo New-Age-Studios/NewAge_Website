@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
+import { formatCurrency } from "@/lib/currency";
 
-export default function ProductFilter({ products }) {
+export default function ProductFilter({ products, currencyCode = "USD", rates = {}, dict = {} }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const initialCategory = searchParams.get("category") || "All";
@@ -82,7 +83,7 @@ export default function ProductFilter({ products }) {
                 className="text-sm px-2.5 py-1 rounded-md"
                 style={{ background: "rgba(249,115,22,0.12)", color: "#f97316", fontWeight: 700, border: "1px solid rgba(249,115,22,0.2)" }}
               >
-                {product.total_price === 0 ? "FREE" : `$${product.total_price}`}
+                {product.total_price === 0 ? (dict.free || "FREE") : formatCurrency(product.total_price, currencyCode, rates)}
               </span>
             </div>
           </Link>

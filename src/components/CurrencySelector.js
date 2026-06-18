@@ -3,18 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
-const currencies = [
-  { code: "BRL", symbol: "R$", flag: "🇧🇷", name: "Brazilian Real" },
-  { code: "USD", symbol: "$", flag: "🇺🇸", name: "US Dollar" },
-  { code: "EUR", symbol: "€", flag: "🇪🇺", name: "Euro" },
-  { code: "GBP", symbol: "£", flag: "🇬🇧", name: "British Pound" },
-  { code: "CAD", symbol: "C$", flag: "🇨🇦", name: "Canadian Dollar" },
-  { code: "AUD", symbol: "A$", flag: "🇦🇺", name: "Australian Dollar" },
-];
+import { currencies } from "@/lib/currency";
 
-export default function CurrencySelector() {
+export default function CurrencySelector({ initialCurrencyCode = "USD" }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(currencies[0]);
+  const [active, setActive] = useState(currencies.find(c => c.code === initialCurrencyCode) || currencies[0]);
   const dropdownRef = useRef(null);
 
   // Close when clicking outside
@@ -61,6 +54,8 @@ export default function CurrencySelector() {
                 onClick={() => {
                   setActive(cur);
                   setIsOpen(false);
+                  document.cookie = `NEXT_CURRENCY=${cur.code}; path=/; max-age=31536000`;
+                  window.location.reload();
                 }}
                 className="w-full flex items-center justify-between px-3 py-2 text-xs transition-colors hover:bg-white/5"
                 style={{ color: active.code === cur.code ? "#f97316" : "rgba(255,255,255,0.7)" }}
