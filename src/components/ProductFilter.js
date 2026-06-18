@@ -71,6 +71,7 @@ export default function ProductFilter({ products, currencyCode = "USD", rates = 
                 alt={product.name}
                 className="absolute inset-0 z-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#191919] z-20 pointer-events-none" />
             </div>
 
             {/* Info */}
