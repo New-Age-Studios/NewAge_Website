@@ -61,15 +61,15 @@ export default function ProductFilter({ products, currencyCode = "USD", rates = 
             style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
           >
             {/* Thumbnail */}
-            <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+            <div className="relative overflow-hidden transform-gpu" style={{ aspectRatio: "16/9" }}>
               <div
-                className="absolute inset-0 z-10 pointer-events-none"
+                className="absolute -inset-px z-10 pointer-events-none"
                 style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)" }}
               />
               <img
                 src={product.image}
                 alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
+                className="absolute inset-0 z-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 

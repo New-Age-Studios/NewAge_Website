@@ -156,11 +156,11 @@ export default async function Home({ params }) {
                 style={{ background: "#191919", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 {/* Thumbnail */}
-                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <div className="relative overflow-hidden transform-gpu" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                    className="absolute inset-0 z-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
