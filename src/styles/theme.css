@@ -179,3 +179,71 @@
     line-height: 1.5;
   }
 }
+
+.tebex-description a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tebex-description a:hover {
+  color: #fb923c;
+  text-decoration: underline;
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.logo-slider::before,
+.logo-slider::after {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-slider::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(10,10,10,0), rgba(10,10,10,1));
+}
+
+.logo-slider::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(10,10,10,0), rgba(10,10,10,1));
+}
+
+.logo-track {
+  display: inline-flex;
+  width: max-content;
+  gap: 80px;
+  padding-right: 80px;
+  animation: scroll-logos 25s linear infinite;
+}
+
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  filter: grayscale(100%) opacity(0.35);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.partner-logo:hover {
+  filter: grayscale(0%) opacity(1);
+}
