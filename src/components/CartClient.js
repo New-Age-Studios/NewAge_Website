@@ -2,7 +2,7 @@
 
 import { useState, useTransition, useEffect } from "react";
 import Link from "next/link";
-import { ShoppingCart, Check, Trash2, ShieldCheck, Gift, ChevronRight } from "lucide-react";
+import { ShoppingCart, Check, Trash2, ShieldCheck, Gift } from "lucide-react";
 import { goToCheckout, removePackage, applyCoupon, removeCoupon } from "@/app/actions/cart";
 import { useRouter } from "next/navigation";
 import { parseLocalizedDescription } from "@/lib/tebex";
