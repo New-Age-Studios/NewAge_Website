@@ -68,44 +68,38 @@ export default async function Home({ params }) {
           }}
         />
 
-        <div className="relative z-10 container mx-auto max-w-[1200px] px-6 lg:px-12 py-20 flex flex-col lg:flex-row items-center justify-between">
-          <div className="flex flex-col items-start lg:max-w-2xl">
-            {/* Pill Badge */}
-            <div 
-              className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6"
-              style={{ background: "rgba(249,115,22,0.2)", border: "1px solid rgba(249,115,22,0.3)" }}
-            >
-              <span style={{ color: "#f97316", fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", lineHeight: 1, paddingTop: "1px" }}>
-                {dict.home.badge}
-              </span>
-            </div>
-
-            <h1
-              className="text-white leading-[1.05] tracking-tight mb-6 max-w-2xl"
-              style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", fontWeight: 900, fontFamily: "'Barlow', sans-serif" }}
-            >
-              {dict.home.title_part1} <br/> {dict.home.title_part2} <span style={{ color: "#f97316" }}>{dict.home.title_highlight}</span>
-            </h1>
-            
-            <p className="mb-10 max-w-xl" style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1.6 }}>
-              {dict.home.subtitle}
-            </p>
-
-            <div className="flex items-center gap-4 flex-wrap">
-              <Link
-                href={`/${lang}/scripts`}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-sm text-white font-bold transition-all hover:brightness-110 active:scale-95"
-                style={{ background: "#f97316" }}
-              >
-                {dict.home.explore_btn}
-                <ArrowRight size={18} />
-              </Link>
-            </div>
-          </div>
+        <div className="relative z-10 container mx-auto max-w-[1200px] px-6 lg:px-12 py-20 flex flex-col items-start">
           
-          {/* Mascot Image */}
-          <div className="hidden lg:block relative mt-10 lg:mt-0 animate-fade-in-up" style={{ animationDuration: '1s', animationFillMode: 'both' }}>
-             <img src="/pipinhoa.png" alt="Pipinho Mascot" className="w-[400px] drop-shadow-[0_20px_50px_rgba(249,115,22,0.3)] hover:scale-105 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" />
+          {/* Pill Badge */}
+          <div 
+            className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6"
+            style={{ background: "rgba(249,115,22,0.2)", border: "1px solid rgba(249,115,22,0.3)" }}
+          >
+            <span style={{ color: "#f97316", fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", lineHeight: 1, paddingTop: "1px" }}>
+              {dict.home.badge}
+            </span>
+          </div>
+
+          <h1
+            className="text-white leading-[1.05] tracking-tight mb-6 max-w-2xl"
+            style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", fontWeight: 900, fontFamily: "'Barlow', sans-serif" }}
+          >
+            {dict.home.title_part1} <br/> {dict.home.title_part2} <span style={{ color: "#f97316" }}>{dict.home.title_highlight}</span>
+          </h1>
+          
+          <p className="mb-10 max-w-xl" style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1.6 }}>
+            {dict.home.subtitle}
+          </p>
+
+          <div className="flex items-center gap-4 flex-wrap">
+            <Link
+              href={`/${lang}/scripts`}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-sm text-white font-bold transition-all hover:brightness-110 active:scale-95"
+              style={{ background: "#f97316" }}
+            >
+              {dict.home.explore_btn}
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
