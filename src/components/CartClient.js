@@ -96,18 +96,21 @@ export default function CartClient({ initialBasket, suggestedProducts, allPackag
           {/* Coluna Esquerda */}
           <div>
             {packages.length === 0 ? (
-              <div className="mb-12">
-                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 15, marginBottom: 20 }}>
-                  {dict.empty || "Your basket is empty. Your players are missing out on the ultimate FiveM experience."}
-                </p>
-                <Link
-                  href={`/${lang}/scripts`}
-                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all hover:brightness-110 active:scale-95"
-                  style={{ background: "rgba(249,115,22,0.15)", color: "#f97316", border: "1px solid rgba(249,115,22,0.3)" }}
-                >
-                  {dict.browse_scripts || "Browse Scripts"}
-                  <ChevronRight size={14} />
-                </Link>
+              <div className="mb-12 flex flex-col sm:flex-row items-center sm:items-start gap-8 bg-[#191919] p-8 rounded-2xl border border-white/5">
+                <img src="/pipinhoe.png" alt="Empty Cart Mascot" className="w-32 object-contain drop-shadow-2xl animate-bounce" style={{ animationDuration: '3s' }} />
+                <div className="text-center sm:text-left flex flex-col items-center sm:items-start">
+                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, marginBottom: 20, lineHeight: 1.6 }}>
+                    {dict.empty || "Your basket is empty. Your players are missing out on the ultimate FiveM experience."}
+                  </p>
+                  <Link
+                    href={`/${lang}/scripts`}
+                    className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all hover:brightness-110 active:scale-95"
+                    style={{ background: "#f97316", color: "white" }}
+                  >
+                    {dict.browse_scripts || "Browse Scripts"}
+                    <ChevronRight size={16} />
+                  </Link>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col gap-4 mb-12">
