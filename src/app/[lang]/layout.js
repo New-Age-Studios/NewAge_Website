@@ -8,8 +8,18 @@ import { getDictionary } from '@/dictionaries';
 import { cookies } from 'next/headers';
 
 export const metadata = {
-  title: 'NewAge Studios | Scripts',
-  description: 'The most popular vehicle scripts for your FiveM server.',
+  title: 'New Age Studios | Premium FiveM Resources',
+  description: 'Elevate your FiveM server with our premium scripts, detailed maps, and optimized props. Built for performance and quality.',
+  openGraph: {
+    title: 'New Age Studios | Premium FiveM Resources',
+    description: 'Elevate your FiveM server with our premium scripts, detailed maps, and optimized props.',
+    siteName: 'New Age Studios',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'New Age Studios | Premium FiveM Resources',
+    description: 'Elevate your FiveM server with our premium scripts, detailed maps, and optimized props.',
+  },
 };
 
 export default async function RootLayout({ children, params }) {
