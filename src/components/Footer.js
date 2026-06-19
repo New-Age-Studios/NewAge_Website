@@ -6,6 +6,7 @@ const partnerLogos = [
   { src: "/mri.png", alt: "MRI", h: "h-28 md:h-32" },
   { src: "/logo-orus.png", alt: "Orus", h: "h-24 md:h-28" },
   { src: "/na-studios.svg", alt: "NA Studios", h: "h-20 md:h-24" },
+  { src: "/retengenharia.png", alt: "Ret Engenharia", h: "h-16 md:h-20" },
 ];
 
 // Repeat logos to ensure the track is wide enough to scroll seamlessly
