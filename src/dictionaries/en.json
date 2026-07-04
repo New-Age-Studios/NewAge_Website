@@ -135,5 +135,19 @@
     "total_price": "Total Price",
     "estimated": "USD estimated; charged at checkout",
     "secure_checkout": "Secure Checkout"
+  },
+  "success": {
+    "title": "Order Complete!",
+    "subtitle": "Thank you, {username}! Your products are now available in your Portal Account.",
+    "itemsPurchased": "ITEMS PURCHASED",
+    "transactionId": "TRANSACTION ID",
+    "orderSummary": "ORDER SUMMARY",
+    "subtotal": "Subtotal",
+    "salesTax": "Sales Tax",
+    "total": "Total",
+    "downloadAssets": "Download Assets",
+    "continueShopping": "Continue Shopping",
+    "discord": "Discord",
+    "noItems": "No items to display."
   }
 }

@@ -135,5 +135,19 @@
     "total_price": "Preço Total",
     "estimated": "Estimado em USD; cobrado no checkout",
     "secure_checkout": "Checkout Seguro"
+  },
+  "success": {
+    "title": "Pedido Concluído!",
+    "subtitle": "Obrigado, {username}! Seus produtos já estão disponíveis na sua Conta do Portal.",
+    "itemsPurchased": "ITENS COMPRADOS",
+    "transactionId": "ID DA TRANSAÇÃO",
+    "orderSummary": "RESUMO DO PEDIDO",
+    "subtotal": "Subtotal",
+    "salesTax": "Imposto (Taxa)",
+    "total": "Total",
+    "downloadAssets": "Baixar Assets",
+    "continueShopping": "Continuar Comprando",
+    "discord": "Discord",
+    "noItems": "Nenhum produto para exibir."
   }
 }

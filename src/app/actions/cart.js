@@ -17,12 +17,23 @@ async function getBasket() {
     }
   }
 
+  const headersList = await headers();
+  const origin = headersList.get("origin") || "http://localhost:3000";
+  const referer = headersList.get("referer") || `${origin}/en/products`;
+  // Extract language from referer if possible, default to en
+  let lang = "en";
+  try {
+    const url = new URL(referer);
+    const pathParts = url.pathname.split("/").filter(Boolean);
+    if (pathParts.length > 0) lang = pathParts[0];
+  } catch (e) {}
+
   const res = await fetch(`${BASE_URL}/baskets`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      complete_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/scripts",
+      complete_url: `${origin}/${lang}/success`,
+      cancel_url: `${origin}/${lang}/products`,
     }),
   });
 
