@@ -1,0 +1,40 @@
+import "@/styles/docs.css";
+import DocsSidebar from "@/components/docs/DocsSidebar";
+import DocsSearch from "@/components/docs/DocsSearch";
+import { getDocsNav } from "@/lib/docs/getNav";
+
+export const metadata = {
+  title: "Documentation | MRI Studios",
+};
+
+export default async function DocsLayout({ children, params }) {
+  const { lang } = await params;
+  const nav = getDocsNav();
+  return (
+    <div style={{ background: "var(--bg)", minHeight: "100vh" }} className="bg-grid">
+      <div className="docs-shell">
+        <aside className="docs-aside">
+          <DocsSidebar lang={lang} nav={nav} />
+        </aside>
+        <main className="docs-main relative">
+          <article className="docs-prose">{children}</article>
+        </main>
+        <aside className="hidden xl:flex flex-col pt-4 sticky top-24 h-[calc(100vh-6rem)]">
+          <div className="mb-8">
+            <DocsSearch nav={nav} lang={lang} />
+          </div>
+          
+          <div className="flex flex-col gap-2">
+            <p className="text-[11px] font-bold tracking-widest uppercase text-white/40 mb-2">Pro Tips</p>
+            <div className="bg-white/5 border border-white/5 rounded-lg p-3 text-[13px] text-white/60">
+              Press <kbd className="bg-black/40 border border-white/10 px-1.5 py-0.5 rounded text-white text-[11px] mx-1">Ctrl</kbd> + <kbd className="bg-black/40 border border-white/10 px-1.5 py-0.5 rounded text-white text-[11px] mx-1">K</kbd> to quickly search the documentation.
+            </div>
+            <div className="bg-white/5 border border-white/5 rounded-lg p-3 text-[13px] text-white/60 mt-2">
+              Need help? Open a ticket in our <a href="https://discord.gg/tyKTs4QyYA" target="_blank" rel="noopener noreferrer" className="text-[#ff5100] hover:underline">Discord</a>.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
+}
