@@ -3,10 +3,11 @@ import { HelpCircle } from "lucide-react";
 import CurrencySelector from "@/components/CurrencySelector";
 
 const partnerLogos = [
-  { src: "/mri.png", alt: "MRI", h: "h-28 md:h-32" },
-  { src: "/logo-orus.png", alt: "Orus", h: "h-24 md:h-28" },
   { src: "/na-studios.svg", alt: "NA Studios", h: "h-20 md:h-24" },
-  { src: "/retengenharia.png", alt: "Ret Engenharia", h: "h-16 md:h-20" },
+  { src: "/mri.png", alt: "MRI", h: "h-28 md:h-32", href: "https://www.mriqbox.com.br/" },
+  { src: "/LogoSC.svg", alt: "Logo SC", h: "h-20 md:h-24", href: "https://www.youtube.com/@StepClimbSC" },
+  { src: "/logo-orus.png", alt: "Orus", h: "h-24 md:h-28", href: "https://orustech.com/" },
+  { src: "/retengenharia.png", alt: "Ret Engenharia", h: "h-16 md:h-20", href: "https://www.retengenharia.com.br/" },
 ];
 
 // Repeat logos to ensure the track is wide enough to scroll seamlessly
@@ -73,11 +74,21 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
               {/* Render twice for a seamless infinite loop (transform -50%) */}
               {[...carouselLogos, ...carouselLogos].map((logo, i) => (
                 <div key={i} className="flex items-center justify-center shrink-0">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.alt} 
-                    className={`${logo.h} object-contain partner-logo`}
-                  />
+                  {logo.href ? (
+                    <a href={logo.href} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        className={`${logo.h} object-contain partner-logo`}
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`${logo.h} object-contain partner-logo`}
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -91,76 +102,76 @@ export default function Footer({ lang = "en", dict = {}, currencyCode = "USD" })
           style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
           className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-12"
         >
-        <div className="grid lg:grid-cols-[240px_1fr] gap-10">
-          {/* Brand */}
-          <div>
-            <div className="mb-4 flex items-center justify-start">
-              <Link href={`/${lang}`}>
-                <img 
-                  src="/na-studios.svg" 
-                  alt="New Age Studios" 
-                  className="h-8 md:h-10 object-contain"
-                  style={{ filter: "brightness(0) invert(1)" }} 
-                />
-              </Link>
-            </div>
+          <div className="grid lg:grid-cols-[240px_1fr] gap-10">
+            {/* Brand */}
+            <div>
+              <div className="mb-4 flex items-center justify-start">
+                <Link href={`/${lang}`}>
+                  <img
+                    src="/na-studios.svg"
+                    alt="New Age Studios"
+                    className="h-8 md:h-10 object-contain"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                  />
+                </Link>
+              </div>
 
-            <div className="flex items-center gap-2 mb-6">
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontWeight: 500 }}>{dict.powered_by || "Powered by"}</span>
-              <div className="flex items-center">
-                <img src="/tebex-logo.webp" alt="Tebex" className="h-8 opacity-80" />
+              <div className="flex items-center gap-2 mb-6">
+                <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontWeight: 500 }}>{dict.powered_by || "Powered by"}</span>
+                <div className="flex items-center">
+                  <img src="/tebex-logo.webp" alt="Tebex" className="h-8 opacity-80" />
+                </div>
+              </div>
+
+              <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.65, maxWidth: 220 }}>
+                {dict.about || "O estúdio focado em levar máxima imersão, qualidade visual e alta performance para revolucionar o mundo do Roleplay no FiveM."}
+              </p>
+
+              <div className="mt-5">
+                <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, marginBottom: 6 }}>{dict.currency || "Currency:"}</p>
+                <CurrencySelector initialCurrencyCode={currencyCode} />
               </div>
             </div>
 
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.65, maxWidth: 220 }}>
-              {dict.about || "O estúdio focado em levar máxima imersão, qualidade visual e alta performance para revolucionar o mundo do Roleplay no FiveM."}
-            </p>
-
-            <div className="mt-5">
-              <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, marginBottom: 6 }}>{dict.currency || "Currency:"}</p>
-              <CurrencySelector initialCurrencyCode={currencyCode} />
+            {/* Link columns */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {footerColumns.map((col) => (
+                <div key={col.title}>
+                  <p
+                    className="mb-4"
+                    style={{ color: "#f2f2f2", fontWeight: 700, fontSize: 13 }}
+                  >
+                    {col.title}
+                  </p>
+                  <ul className="flex flex-col gap-2.5">
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          target={link.href.startsWith("http") ? "_blank" : undefined}
+                          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="text-xs transition-colors hover:text-white"
+                          style={{ color: "rgba(255,255,255,0.4)" }}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          </div>
-
-          {/* Link columns */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {footerColumns.map((col) => (
-              <div key={col.title}>
-                <p
-                  className="mb-4"
-                  style={{ color: "#f2f2f2", fontWeight: 700, fontSize: 13 }}
-                >
-                  {col.title}
-                </p>
-                <ul className="flex flex-col gap-2.5">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="text-xs transition-colors hover:text-white"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
-      </div>
 
-      {/* Copyright */}
-      <div
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-        className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-6"
-      >
-        <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 11, lineHeight: 1.7 }}>
-          {dict.copyright || "Copyright © 2026, New Age Studios. Not affiliated with or endorsed by Rockstar North, Take-Two Interactive or other rights holders. FiveM is a copyright and registered trademark of Take-Two Interactive Software, Inc. Our checkout process is owned & operated by Tebex Limited, who handle product fulfilment, billing support and refunds. Displayed prices may be estimates using a conversion rate updated once per day. Checkout will always be in USD, GBP, EUR, CAD, AUD or BRL; so final price may differ depending on bank/payment processor exchange rate."}
-        </p>
+        {/* Copyright */}
+        <div
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          className="container mx-auto max-w-[1200px] px-6 lg:px-12 py-6"
+        >
+          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: 11, lineHeight: 1.7 }}>
+            {dict.copyright || "Copyright © 2026, New Age Studios. Not affiliated with or endorsed by Rockstar North, Take-Two Interactive or other rights holders. FiveM is a copyright and registered trademark of Take-Two Interactive Software, Inc. Our checkout process is owned & operated by Tebex Limited, who handle product fulfilment, billing support and refunds. Displayed prices may be estimates using a conversion rate updated once per day. Checkout will always be in USD, GBP, EUR, CAD, AUD or BRL; so final price may differ depending on bank/payment processor exchange rate."}
+          </p>
         </div>
       </div>
     </footer>
