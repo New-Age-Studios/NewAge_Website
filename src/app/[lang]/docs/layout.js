@@ -19,7 +19,7 @@ export default async function DocsLayout({ children, params }) {
         <main className="docs-main relative">
           <article className="docs-prose">{children}</article>
         </main>
-        <aside className="hidden xl:flex flex-col pt-4 sticky top-24 h-[calc(100vh-6rem)]">
+        <aside className="hidden xl:flex flex-col pt-4 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar">
           <div className="mb-8">
             <DocsSearch nav={nav} lang={lang} />
           </div>

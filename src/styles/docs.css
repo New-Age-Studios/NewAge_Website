@@ -36,6 +36,23 @@
     align-self: start;
     position: sticky;
     top: 6rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+  }
+  
+  /* Optional: Custom scrollbar for sidebar */
+  .docs-aside::-webkit-scrollbar,
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .docs-aside::-webkit-scrollbar-track,
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .docs-aside::-webkit-scrollbar-thumb,
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
   }
 }
 .docs-sidebar-section { margin-bottom: 1.75rem; }
