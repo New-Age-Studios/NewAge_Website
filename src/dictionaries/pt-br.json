@@ -149,5 +149,10 @@
     "continueShopping": "Continuar Comprando",
     "discord": "Discord",
     "noItems": "Nenhum produto para exibir."
+  },
+  "docs_mobile": {
+    "title": "Acesso pelo Computador Obrigatório",
+    "description": "Nossa documentação contém blocos de código grandes e exemplos complexos que não podem ser visualizados pelo celular. Por favor, acesse esta página de um computador (desktop ou notebook) para conseguir ler o conteúdo.",
+    "back_home": "Página Inicial"
   }
 }

@@ -149,5 +149,10 @@
     "continueShopping": "Continue Shopping",
     "discord": "Discord",
     "noItems": "No items to display."
+  },
+  "docs_mobile": {
+    "title": "Computer Access Required",
+    "description": "Our documentation contains large code blocks and complex examples that cannot be viewed on mobile devices. Please access this page from a desktop or laptop to read the content.",
+    "back_home": "Home Page"
   }
 }
