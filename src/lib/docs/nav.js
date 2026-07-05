@@ -11,13 +11,20 @@ export const docsNav = [
   {
     title: "FIVEM MAPS",
     items: [
-      { title: "Los Santos River", slug: "fivem/los-santos-river", icon: "Sailboat" },
-      { title: "Pet Shop V2", slug: "fivem/pet-shop-v2", icon: "PawPrint" },
-      { title: "Vinewood Pawn Shop", slug: "fivem/vinewood-pawn-shop", icon: "ShoppingBag" },
-      { title: "Cayo Perico Gas Station", slug: "fivem/cayo-perico-gas", icon: "Fuel" },
-      { title: "Brazilian Bus Stop", slug: "fivem/brazilian-stop-bus", icon: "Bus" },
-      { title: "Abandoned PDM", slug: "fivem/pdm-abandoned", icon: "CarFront" },
-      { title: "Sandy Shores Dump", slug: "fivem/sandy-shores-dump", icon: "Trash2", isComingSoon: true },
+      { title: "Los Santos River", slug: "maps/los-santos-river", icon: "Sailboat" },
+      { title: "Pet Shop V2", slug: "maps/pet-shop-v2", icon: "PawPrint" },
+      { title: "Vinewood Pawn Shop", slug: "maps/vinewood-pawn-shop", icon: "ShoppingBag" },
+      { title: "Cayo Perico Gas Station", slug: "maps/cayo-perico-gas", icon: "Fuel" },
+      { title: "Brazilian Bus Stop", slug: "maps/brazilian-stop-bus", icon: "Bus" },
+      { title: "Abandoned PDM", slug: "maps/pdm-abandoned", icon: "CarFront" },
+      { title: "Sandy Shores Dump", slug: "maps/sandy-shores-dump", icon: "Trash2", isComingSoon: true },
+    ],
+  },
+  {
+    title: "FIVEM SCRIPTS",
+    items: [
+      { title: "Detran", slug: "scripts/detran", icon: "CarFront", isComingSoon: true },
+      { title: "Bike Rental", slug: "scripts/bike-rental", icon: "Bike", isComingSoon: true },
     ],
   },
 ];
