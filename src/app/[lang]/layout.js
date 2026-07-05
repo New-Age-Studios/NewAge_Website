@@ -29,9 +29,9 @@ export default async function RootLayout({ children, params }) {
   const currencyCode = cookieStore.get("NEXT_CURRENCY")?.value || "USD";
   return (
     <html lang={lang}>
-      <body className="select-none" style={{ background: "#141414", minHeight: "100vh", display: "flex", flexDirection: "column", overflowX: "visible" }}>
+      <body className="select-none" style={{ background: "#141414", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <Navbar lang={lang} dict={dict.navbar} />
-        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ flex: 1 }}>
           {children}
         </div>
         <Footer lang={lang} dict={dict.footer} currencyCode={currencyCode} />
