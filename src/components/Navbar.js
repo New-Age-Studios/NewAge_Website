@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Menu, X, ChevronDown, History, LogOut, Globe } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown, History, LogOut, Globe, ChevronRight } from "lucide-react";
 import { useState, useTransition, useEffect, useRef } from "react";
 import { initiateLogin, getBasketData, logout, getAvailableAuthMethods } from "@/app/actions/cart";
 
@@ -76,11 +76,13 @@ export default function Navbar({ lang = "en", dict = {} }) {
   const username = basketData?.username;
   const packagesCount = basketData?.packages?.length || 0;
 
+  const isDocs = pathname?.includes('/docs');
+
   return (
     <>
       <nav
         style={{ fontFamily: "'Inter', sans-serif" }}
-        className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
+        className={`absolute top-0 left-0 right-0 z-50 items-center justify-between px-6 py-3 ${isDocs ? "hidden md:flex" : "flex"}`}
       >
         <div
           className="absolute inset-0"
@@ -267,26 +269,29 @@ export default function Navbar({ lang = "en", dict = {} }) {
         </div>
 
         {/* Mobile menu */}
-        {mobileOpen && (
-          <div
-            className="absolute top-full left-0 right-0 flex flex-col py-4 gap-1"
-            style={{ background: "rgba(20,20,20,0.98)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
-          >
-            {navLinks.map((link) => (
+        <div
+          className={`absolute top-full left-0 right-0 flex flex-col py-6 px-4 gap-2 transition-all duration-300 origin-top shadow-2xl overflow-hidden rounded-b-3xl ${mobileOpen ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"}`}
+          style={{ background: "rgba(14,14,14,0.98)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+        >
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== `/${lang}` && pathname.startsWith(link.href));
+            return (
               <Link
                 key={link.href}
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => setMobileOpen(false)}
-                className="px-6 py-2.5 text-sm transition-colors"
-                style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}
+                className={`group flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 ${isActive ? "bg-[#ff5100]/10 border border-[#ff5100]/20" : "bg-transparent border border-transparent hover:bg-white/5"}`}
               >
-                {link.label}
+                <span className={`text-[15px] transition-colors ${isActive ? "text-[#ff5100] font-bold" : "text-white/70 font-medium group-hover:text-white"}`}>
+                  {link.label}
+                </span>
+                <ChevronRight size={16} className={`transition-transform duration-300 ${isActive ? "text-[#ff5100]" : "text-white/20 group-hover:text-white/60 group-hover:translate-x-1"}`} />
               </Link>
-            ))}
-          </div>
-        )}
+            );
+          })}
+        </div>
       </nav>
 
       {/* Manage Orders Modal */}
