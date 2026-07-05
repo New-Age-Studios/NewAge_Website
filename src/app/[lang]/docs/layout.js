@@ -2,22 +2,28 @@ import "@/styles/docs.css";
 import DocsSidebar from "@/components/docs/DocsSidebar";
 import DocsSearch from "@/components/docs/DocsSearch";
 import { getDocsNav } from "@/lib/docs/getNav";
+import { getDictionary } from "@/dictionaries";
+import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
-  title: "Documentation | MRI Studios",
+  title: "Documentation | New Age Studios",
 };
 
 export default async function DocsLayout({ children, params }) {
   const { lang } = await params;
   const nav = getDocsNav();
+  const dict = await getDictionary(lang);
+  const mobileDict = dict.docs_mobile;
+
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }} className="bg-grid">
       <div className="docs-shell">
         <aside className="docs-aside">
-          <DocsSidebar lang={lang} nav={nav} />
+          <DocsSidebar lang={lang} nav={nav} dict={mobileDict} />
         </aside>
-        <main className="docs-main relative">
-          <article className="docs-prose">{children}</article>
+        <main className="docs-main relative min-w-0 w-full max-w-full overflow-x-hidden">
+          <article className="docs-prose break-words w-full max-w-full">{children}</article>
         </main>
         <aside className="hidden xl:flex flex-col pt-4 sticky top-24 h-[calc(100vh-6rem)]">
           <div className="mb-8">
