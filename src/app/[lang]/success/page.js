@@ -8,6 +8,7 @@ export default async function SuccessPage(props) {
   const dict = await getDictionary(lang);
 
   const transactionId =
+    searchParams?.["txn-id"] ||
     searchParams?.["tbx-id"] ||
     searchParams?.txnId ||
     searchParams?.transaction_id ||
