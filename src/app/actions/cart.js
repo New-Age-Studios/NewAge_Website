@@ -36,6 +36,7 @@ async function getBasket() {
     body: JSON.stringify({
       complete_url: `${originUrl}/${lang}/success`,
       cancel_url: `${originUrl}/${lang}/products`,
+      complete_auto_redirect: true,
     }),
   });
 
