@@ -138,7 +138,7 @@
   },
   "success": {
     "title": "Order Complete!",
-    "subtitle": "Thank you, {username}! Your products are now available in your Portal Account.",
+    "subtitle": "Thank you! Your products are now available in your Portal Account.",
     "itemsPurchased": "ITEMS PURCHASED",
     "transactionId": "TRANSACTION ID",
     "orderSummary": "ORDER SUMMARY",
@@ -148,7 +148,10 @@
     "downloadAssets": "Download Assets",
     "continueShopping": "Continue Shopping",
     "discord": "Discord",
-    "noItems": "No items to display."
+    "noItems": "No items to display.",
+    "congratsTitle": "The New Age team thanks you for your purchase!",
+    "congratsDescription": "Your payment has been confirmed. Access the CFX Portal to download your assets and start using them right away.",
+    "copy": "Copy"
   },
   "docs_mobile": {
     "title": "Computer Access Required",
