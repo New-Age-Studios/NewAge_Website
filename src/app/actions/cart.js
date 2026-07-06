@@ -13,7 +13,14 @@ async function getBasket() {
   if (ident) {
     const res = await fetch(`${BASE_URL}/baskets/${ident}`);
     if (res.ok) {
-      return ident;
+      const json = await res.json();
+      if (json.data?.links?.checkout) {
+        return ident;
+      } else {
+        cookieStore.delete("tebex_basket_ident");
+      }
+    } else {
+      cookieStore.delete("tebex_basket_ident");
     }
   }
 
@@ -36,6 +43,7 @@ async function getBasket() {
     body: JSON.stringify({
       complete_url: `${originUrl}/${lang}/success`,
       cancel_url: `${originUrl}/${lang}/products`,
+      complete_auto_redirect: true,
     }),
   });
 
