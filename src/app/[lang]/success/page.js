@@ -94,25 +94,31 @@ export default async function SuccessPage(props) {
               <div className="p-6">
                 {items.length > 0 ? (
                   <div className="space-y-6">
-                    {items.map((pkg, idx) => (
-                      <div key={idx} className="flex gap-4">
-                        <div className="w-32 h-20 bg-[#27272a] rounded-md overflow-hidden flex-shrink-0">
-                          {pkg.image && (
-                            <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
-                          )}
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex justify-between items-start mb-1">
-                            <h3 className="text-white font-bold">{pkg.name}</h3>
-                            <span className="text-[#a1a1aa] text-sm">{currency} {pkg.price.toFixed(2)}</span>
+                    {items.map((pkg, idx) => {
+                      const pkgName = pkg.package?.name || pkg.name || 'Unknown Item';
+                      const pkgImage = pkg.package?.image || pkg.image;
+                      const pkgPrice = pkg.package?.price ?? pkg.price ?? 0;
+                      
+                      return (
+                        <div key={idx} className="flex gap-4">
+                          <div className="w-32 h-20 bg-[#27272a] rounded-md overflow-hidden flex-shrink-0">
+                            {pkgImage && (
+                              <img src={pkgImage} alt={pkgName} className="w-full h-full object-cover" />
+                            )}
                           </div>
-                          <p className="text-[#a1a1aa] text-sm line-clamp-2">
-                            {/* In a real scenario we'd strip HTML from pkg.description here if needed */}
-                            Purchased package from New Age Studios.
-                          </p>
+                          <div className="flex-grow">
+                            <div className="flex justify-between items-start mb-1">
+                              <h3 className="text-white font-bold">{pkgName}</h3>
+                              <span className="text-[#a1a1aa] text-sm">{currency} {Number(pkgPrice).toFixed(2)}</span>
+                            </div>
+                            <p className="text-[#a1a1aa] text-sm line-clamp-2">
+                              {/* In a real scenario we'd strip HTML from pkg.description here if needed */}
+                              Purchased package from New Age Studios.
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="text-center py-8 text-[#a1a1aa]">
