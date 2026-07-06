@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { CheckCircle, Download, ShoppingCart } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import Link from "next/link";
+import { logout } from "@/app/actions/cart";
 
 function Confetti() {
   const canvasRef = useRef(null);
@@ -81,6 +82,10 @@ function Confetti() {
 }
 
 export default function SuccessClient({ lang, t, transactionId }) {
+  useEffect(() => {
+    logout();
+  }, []);
+
   return (
     <>
       <Confetti />
