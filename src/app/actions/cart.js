@@ -94,6 +94,11 @@ export async function logout() {
   cookieStore.delete("tebex_basket_ident");
 }
 
+export async function clearCartCookie() {
+  const cookieStore = await cookies();
+  cookieStore.delete("tebex_basket_ident");
+}
+
 export async function initiateLogin(returnPath, providerName = "FiveM") {
   const headersList = await headers();
   const host = headersList.get("host") || "localhost:3000";

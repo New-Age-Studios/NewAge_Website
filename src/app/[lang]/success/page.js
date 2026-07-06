@@ -3,6 +3,7 @@ import { CheckCircle, Download, ShoppingCart } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import Link from "next/link";
 import { getBasketData } from "@/app/actions/cart";
+import ClearCartOnSuccess from "@/components/ClearCartOnSuccess";
 
 export default async function SuccessPage(props) {
   const params = await props.params;
@@ -52,6 +53,8 @@ export default async function SuccessPage(props) {
         backgroundAttachment: "fixed"
       }}
     >
+      <ClearCartOnSuccess />
+      
       {/* Dark Overlay for readability */}
       <div className="absolute inset-0 bg-black/80 z-0 pointer-events-none" />
 
