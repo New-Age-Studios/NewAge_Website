@@ -13,14 +13,7 @@ async function getBasket() {
   if (ident) {
     const res = await fetch(`${BASE_URL}/baskets/${ident}`);
     if (res.ok) {
-      const json = await res.json();
-      if (json.data?.links?.checkout) {
-        return ident;
-      } else {
-        cookieStore.delete("tebex_basket_ident");
-      }
-    } else {
-      cookieStore.delete("tebex_basket_ident");
+      return ident;
     }
   }
 
@@ -43,7 +36,6 @@ async function getBasket() {
     body: JSON.stringify({
       complete_url: `${originUrl}/${lang}/success`,
       cancel_url: `${originUrl}/${lang}/products`,
-      complete_auto_redirect: true,
     }),
   });
 
@@ -98,11 +90,6 @@ export async function getAvailableAuthMethods(returnPath = "/") {
 }
 
 export async function logout() {
-  const cookieStore = await cookies();
-  cookieStore.delete("tebex_basket_ident");
-}
-
-export async function clearCartCookie() {
   const cookieStore = await cookies();
   cookieStore.delete("tebex_basket_ident");
 }
