@@ -154,7 +154,7 @@ export default async function SuccessPage(props) {
             {/* Actions */}
             <div className="space-y-3">
               <a 
-                href="https://portal.cfx.re/assets/granted-assets"
+                href="https://portal.cfx.re/assets/granted-assets?search=new"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-[#ff5100] hover:bg-[#e64a00] text-white py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors"

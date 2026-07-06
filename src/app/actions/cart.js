@@ -18,8 +18,10 @@ async function getBasket() {
   }
 
   const headersList = await headers();
-  const origin = headersList.get("origin") || "http://localhost:3000";
-  const referer = headersList.get("referer") || `${origin}/en/products`;
+  const host = headersList.get("host") || "localhost:3000";
+  const protocol = host.includes("localhost") ? "http" : "https";
+  const originUrl = `${protocol}://${host}`;
+  const referer = headersList.get("referer") || `${originUrl}/en/products`;
   // Extract language from referer if possible, default to en
   let lang = "en";
   try {
@@ -32,8 +34,8 @@ async function getBasket() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      complete_url: `${origin}/${lang}/success`,
-      cancel_url: `${origin}/${lang}/products`,
+      complete_url: `${originUrl}/${lang}/success`,
+      cancel_url: `${originUrl}/${lang}/products`,
     }),
   });
 
@@ -152,9 +154,6 @@ export async function goToCheckout() {
   const checkoutUrl = checkoutJson.data.links.checkout;
 
   if (!checkoutUrl) throw new Error("Could not generate checkout link.");
-
-  const cookieStore = await cookies();
-  cookieStore.delete("tebex_basket_ident");
 
   redirect(checkoutUrl);
 }
