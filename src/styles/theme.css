@@ -180,6 +180,36 @@
   }
 }
 
+.tebex-description p {
+  margin-bottom: 1.25rem;
+}
+
+.tebex-description p:last-child {
+  margin-bottom: 0;
+}
+
+.tebex-description ul,
+.tebex-description ol {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tebex-description li {
+  margin-bottom: 0.5rem;
+}
+
+.tebex-description h1,
+.tebex-description h2,
+.tebex-description h3,
+.tebex-description h4 {
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
 .tebex-description a {
   color: var(--primary);
   text-decoration: none;
