@@ -34,9 +34,9 @@ export default async function Home({ params }) {
   const cookieStore = await cookies();
   const currencyCode = cookieStore.get("NEXT_CURRENCY")?.value || "USD";
   const rates = await getExchangeRates();
-  
+
   const products = await getPackages();
-  
+
   // Try to find the exact products requested by the user, if not, fallback to first 3 products
   const targetNames = ["los santos river", "vinewood pawn shop", "cayo perico fuel station"];
   let bestSellers = products.filter(p => targetNames.some(t => p.name.toLowerCase().includes(t)));
@@ -51,17 +51,17 @@ export default async function Home({ params }) {
         className="relative flex items-center min-h-[90vh] overflow-hidden pt-16"
       >
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: "url('/background.jpg')",
+            backgroundImage: "url('/background.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        
+
         {/* Gradient Overlay for text readability (Darker on the left) and fading into the next section at the bottom */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.6) 40%, rgba(20,20,20,0) 100%), linear-gradient(to bottom, rgba(20,20,20,0) 60%, rgba(20,20,20,1) 100%)"
@@ -69,9 +69,9 @@ export default async function Home({ params }) {
         />
 
         <div className="relative z-10 container mx-auto max-w-[1200px] px-6 lg:px-12 py-20 flex flex-col items-start">
-          
+
           {/* Pill Badge */}
-          <div 
+          <div
             className="inline-flex items-center justify-center px-4 py-2 rounded-full mb-6"
             style={{ background: "rgba(249,115,22,0.2)", border: "1px solid rgba(249,115,22,0.3)" }}
           >
@@ -84,9 +84,9 @@ export default async function Home({ params }) {
             className="text-white leading-[1.05] tracking-tight mb-6 max-w-2xl"
             style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", fontWeight: 900, fontFamily: "'Barlow', sans-serif" }}
           >
-            {dict.home.title_part1} <br/> {dict.home.title_part2} <span style={{ color: "#f97316" }}>{dict.home.title_highlight}</span>
+            {dict.home.title_part1} <br /> {dict.home.title_part2} <span style={{ color: "#f97316" }}>{dict.home.title_highlight}</span>
           </h1>
-          
+
           <p className="mb-10 max-w-xl" style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1.6 }}>
             {dict.home.subtitle}
           </p>
@@ -173,7 +173,7 @@ export default async function Home({ params }) {
                   >
                     {product.category?.name?.toUpperCase() || "MAPS"}
                   </span>
-                  
+
                   <div>
                     <p className="text-lg mb-1" style={{ color: "#f2f2f2", fontWeight: 700 }}>{product.name}</p>
                     <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -186,7 +186,7 @@ export default async function Home({ params }) {
           </div>
 
           <div className="flex justify-center">
-            <Link 
+            <Link
               href={`/${lang}/scripts`}
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all hover:brightness-110 active:scale-95"
               style={{ background: "#3d2514", color: "#e8a068" }}
