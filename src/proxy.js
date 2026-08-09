@@ -15,7 +15,7 @@ const countryToCurrency = {
   NO: 'NOK', SE: 'SEK', PL: 'PLN', CZ: 'CZK', HU: 'HUF', RO: 'RON'
 };
 
-export function middleware(request) {
+export function proxy(request) {
   const { pathname } = request.nextUrl;
   
   // Skip public assets and internal next routes

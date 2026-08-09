@@ -10,7 +10,6 @@ export default function Navbar({ lang = "en", dict = {} }) {
   const navLinks = [
     { label: dict.home || "Home", href: `/${lang}` },
     { label: dict.products || "Products", href: `/${lang}/products` },
-    { label: dict.showcase || "Showcase", href: `/${lang}/showcase` },
     { label: dict.docs || "Docs", href: `/${lang}/docs` },
     { label: dict.support || "Support", href: `/${lang}/support` },
   ];
