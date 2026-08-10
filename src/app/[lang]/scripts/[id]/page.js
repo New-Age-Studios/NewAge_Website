@@ -3,6 +3,7 @@ import { ChevronRight, Check, Heart } from "lucide-react";
 import { getPackage, getPackages, parseLocalizedDescription } from "@/lib/tebex";
 import { getBasketData } from "@/app/actions/cart";
 import ClientAddToCart from "@/components/ClientAddToCart";
+import KofiDonateButton from "@/components/KofiDonateButton";
 import ProductGallery from "@/components/ProductGallery";
 import { getDictionary } from "@/dictionaries";
 import { cookies } from "next/headers";
@@ -86,20 +87,7 @@ export default async function ProductPage({ params }) {
               </div>
 
               {product.total_price === 0 && (
-                <a
-                  href="https://ko-fi.com/newagestudios"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3.5 flex items-center justify-center gap-2.5 w-full py-3.5 px-4 rounded-xl text-sm font-bold transition-all hover:brightness-110 active:scale-95 shadow-lg"
-                  style={{
-                    background: "linear-gradient(135deg, #FF5E5B 0%, #D93835 100%)",
-                    color: "#ffffff",
-                    border: "1px solid rgba(255, 255, 255, 0.2)"
-                  }}
-                >
-                  <Heart size={18} fill="currentColor" className="text-white animate-pulse" />
-                  {dict.product.donate || "Fazer uma Doação (Ko-fi)"}
-                </a>
+                <KofiDonateButton dict={dict.product} lang={lang} />
               )}
 
               <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
