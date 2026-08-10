@@ -30,10 +30,10 @@
 <h2>🎬 Media & Quick Links</h2>
 
 <p>
-🛒 <strong>Purchase on Tebex:</strong> <a href="https://newagestudios.tebex.io/package/7066074">New Age Studios Store</a><br>
-🎥 <strong>Watch Showcase Video:</strong> <a href="https://www.youtube.com/watch?v=gxgZq-6TurM">Vinewood Pawn Shop Video</a><br>
+🛒 <strong>Purchase on Tebex:</strong> <a href="https://www.newageoficial.com/pt-br/scripts/7066074">New Age Studios Store</a><br>
+🎥 <strong>Watch Showcase Video:</strong> <a href="https://www.youtube.com/watch?v=XmlvUSOppD4&t=1s">Vinewood Pawn Shop Video</a><br>
 📚 <strong>Official Documentation:</strong> <a href="https://www.newageoficial.com/docs">New Age Docs</a><br>
-💬 <strong>Discord Support:</strong> <a href="https://www.newageoficial.com/support">Join Our Community</a>
+💬 <strong>Discord Support:</strong> <a href="hhttps://www.newageoficial.com/support">Join Our Community</a>
 </p>
 
 <hr>
@@ -55,13 +55,7 @@
 <h2>🛠️ Technical Information</h2>
 
 <ul>
-  <li><strong>Location:</strong> Vinewood Blvd</li>
-  <li><strong>Coordinates (cds):</strong></li>
-</ul>
-
-<pre><code>-1459.65, -414.61, 35.72</code></pre>
-
-<ul>
+  <li><strong>Location:</strong> Vinewood Blvd, cds: <code>-1459.65, -414.61, 35.72</code></li>
   <li><strong>Requirements:</strong> GameBuild 3258+</li>
   <li><strong>Framework:</strong> Compatible with all frameworks (ESX, QBCore, QBOX, Standalone)</li>
 </ul>
