@@ -55,9 +55,9 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
           boxShadow: "0 4px 20px rgba(249, 115, 22, 0.25)"
         }}
       >
-        <Heart size={18} fill="currentColor" className="text-white animate-pulse" />
-        <span>{buttonText}</span>
-        <img src="/ko-fi.svg" alt="Ko-fi" className="h-8 w-auto object-contain ml-1.5 drop-shadow-md" style={{ height: 32 }} />
+        <Heart size={16} fill="currentColor" className="text-white animate-pulse shrink-0" />
+        <span className="whitespace-nowrap text-xs sm:text-sm">{buttonText}</span>
+        <img src="/ko-fi.svg" alt="Ko-fi" className="h-5 w-auto object-contain ml-0.5 drop-shadow-md shrink-0" style={{ height: 20 }} />
       </button>
 
       {/* Ko-fi Donation Modal Overlay */}
