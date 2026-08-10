@@ -43,7 +43,7 @@ export default async function ProductPage({ params }) {
           <span style={{ color: "rgba(255,255,255,0.7)" }}>{product.name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 lg:gap-10 items-start w-full max-w-full overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 lg:gap-10 items-start w-full max-w-full">
           
           {/* Gallery (Top on Mobile & Desktop) */}
           <div className="order-1 lg:col-start-1 lg:row-start-1 w-full max-w-full overflow-hidden">
@@ -51,7 +51,7 @@ export default async function ProductPage({ params }) {
           </div>
 
           {/* Purchase Panel (Middle on Mobile, Right Column on Desktop) */}
-          <div className="order-2 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:sticky w-full max-w-full" style={{ top: 90 }}>
+          <div className="order-2 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2 w-full max-w-full">
 
             <div
               className="rounded-2xl p-6"
