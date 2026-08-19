@@ -103,6 +103,10 @@
   },
   "product": {
     "buy_now": "Buy Now",
+    "added_success_title": "Item Added!",
+    "added_success_msg": "Item successfully added to your cart.",
+    "continue_shopping": "Continue Shopping",
+    "go_to_cart": "Go to Cart",
     "add_to_cart": "Add to Cart",
     "added_to_cart": "Added to Cart",
     "free": "FREE",

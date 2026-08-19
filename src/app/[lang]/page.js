@@ -167,14 +167,8 @@ export default async function Home({ params }) {
 
                 {/* Info */}
                 <div className="p-5 flex flex-col gap-3 relative z-20 bg-[#191919] -mt-[2px] rounded-b-2xl">
-                  <span
-                    className="text-[10px] px-2 py-0.5 rounded-sm inline-block self-start"
-                    style={{ background: "rgba(249,115,22,0.15)", color: "#f97316", fontWeight: 800, letterSpacing: "0.05em" }}
-                  >
-                    {product.category?.name?.toUpperCase() || "MAPS"}
-                  </span>
-
                   <div>
+
                     <p className="text-lg mb-1" style={{ color: "#f2f2f2", fontWeight: 700 }}>{product.name}</p>
                     <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
                       {product.total_price === 0 ? dict.home.free : formatCurrency(product.total_price, currencyCode, rates)}

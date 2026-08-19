@@ -77,7 +77,6 @@ export default function ProductFilter({ products, currencyCode = "USD", rates = 
             <div className="p-4 flex items-center justify-between relative z-20 bg-[#191919] -mt-[2px] rounded-b-2xl">
               <div>
                 <p className="text-sm" style={{ color: "#f2f2f2", fontWeight: 600 }}>{product.name}</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>{product.category?.name || "SCRIPT"}</p>
               </div>
               <span
                 className="text-sm px-2.5 py-1 rounded-md"

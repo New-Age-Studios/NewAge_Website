@@ -103,6 +103,10 @@
   },
   "product": {
     "buy_now": "Comprar Agora",
+    "added_success_title": "Item Adicionado!",
+    "added_success_msg": "Item adicionado ao carrinho com sucesso.",
+    "continue_shopping": "Continuar Comprando",
+    "go_to_cart": "Ir para o Carrinho",
     "add_to_cart": "Adicionar ao Carrinho",
     "added_to_cart": "Adicionado ao Carrinho",
     "free": "GRÁTIS",
