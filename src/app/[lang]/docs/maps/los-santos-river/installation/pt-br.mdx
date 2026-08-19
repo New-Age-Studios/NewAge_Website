@@ -1,0 +1,95 @@
+{/* icon: BookAlert */}
+<Cover src="/images/maps/lsriver.png" />
+## Instalação
+
+---
+
+<Callout type="warn" title="Atenção">
+**Faltando água em alguns pontos do rio?** Siga o passo a passo abaixo para resolver.
+</Callout>
+
+<Callout type="error" title="Aviso Importante:">
+**não altere os nomes das pastas do mapa. Elas devem permanecer exatamente assim:**
+- 📁 new_age_studios_river_data
+- 📁 new_age_studios_river_map
+
+*se você alterar o nome, o mapa não funcionará corretamente.*
+</Callout>
+
+### 📌 GameBuild do Servidor
+
+Certifique-se de que o seu servidor está configurado para usar a versão **3095 +** do game build.
+No arquivo `server.cfg`, deve ficar assim:
+
+```cfg
+set sv_enforceGameBuild 3095 # 3258
+```
+
+---
+
+### 📁 Modificação nos arquivos gta5.meta
+
+1. Localize todos os arquivos **gta5.meta** no seu servidor
+2. **Edite esta parte do código**
+
+```xml
+<Item>            
+  <filename>COMMON:/data/levels/gta5/heightmap.dat</filename>       
+  <fileType>WORLD_HEIGHTMAP_FILE</fileType>     
+</Item>
+```
+
+3. **Para isto**
+
+```xml
+<Item>  	
+  <filename>resources:/new-age-studios-river-data/heightmap.dat</filename>
+  <fileType>WORLD_HEIGHTMAP_FILE</fileType>
+</Item>
+```
+
+<Callout type="info">
+Todos eles devem ficar parecidos com isso, conforme mostrado na imagem abaixo.
+</Callout>
+
+<img src="/images/docs/lsriverxml.png" alt="gta5.meta" />
+
+### Cenários que foram editados
+
+* cypress_flats.ymt
+* east_los_santos.ymt
+* la_mesa.ymt
+
+### 🗑️ Como Remover Todos os Arquivos water.xml
+
+1. Abra a pasta do seu servidor (a raiz da base do seu FiveM).
+2. Pesquise por `water.xml`.
+3. Delete ou mova eles (botão direito → Excluir, ou mova para uma pasta de backup).
+4. Verifique novamente para ter certeza de que não restou nenhuma duplicata.
+5. Limpe a pasta `cache` para que o FiveM recarregue de forma limpa.
+
+### 📎 Tutorial: Como Instalar um Mapa Pronto no FiveM
+
+#### 1. 📁 Coloque o mapa na pasta resources
+Mova a pasta do mapa para dentro da pasta `resources` do seu servidor.
+
+> Exemplo de caminho:
+> `cfx-server/resources/[maps]/new-age-studios`
+
+#### 2. 🧹 Delete o cache do servidor
+Antes de iniciar o servidor, apague a pasta `cache` localizada na raiz do servidor. Isso evita que arquivos velhos interfiram no carregamento correto do mapa.
+
+#### 3. 📜 Adicione ao server.cfg
+Abra o arquivo `server.cfg` e adicione as seguintes linhas **nesta ordem**:
+
+```cfg
+ensure new-age-studios-river-data
+ensure new-age-studios-river-map
+```
+
+> **Abaixo de `ensure new-age-studios-river-map`, adicione o restante dos seus mapas.**
+
+#### 4. ▶️ Inicie o servidor
+Inicie o seu servidor normalmente.
+
+<Support />

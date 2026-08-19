@@ -1,8 +1,12 @@
 "use client";
 
 import { Play, Clock } from "lucide-react";
+import { useParams } from 'next/navigation';
 
 export function VideoPlaceholder({ imageSrc = "/pipinhod.png" }) {
+  const params = useParams();
+  const lang = params?.lang || 'en';
+  const isPt = lang === 'pt-br';
   return (
     <div className="relative w-full aspect-video max-h-[450px] rounded-xl overflow-hidden group mb-8 border border-[#3c3127] bg-[#0a0a0a]">
       
@@ -57,10 +61,10 @@ export function VideoPlaceholder({ imageSrc = "/pipinhod.png" }) {
         
         {/* Text content */}
         <h3 className="text-white text-xl md:text-2xl font-bold mb-2 tracking-tight drop-shadow-lg">
-          Video Coming Soon
+          {isPt ? 'Vídeo em Breve' : 'Video Coming Soon'}
         </h3>
         <p className="text-white/80 text-[13px] md:text-sm max-w-sm text-center px-4 leading-relaxed font-medium drop-shadow-md">
-          We are recording a detailed showcase of this system. Stay tuned!
+          {isPt ? 'Estamos gravando uma apresentação detalhada deste sistema. Fique ligado!' : 'We are recording a detailed showcase of this system. Stay tuned!'}
         </p>
       </div>
       

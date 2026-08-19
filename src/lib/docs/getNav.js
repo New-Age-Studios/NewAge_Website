@@ -21,26 +21,43 @@ function extractMetadataFromMdx(filePath, fallbackTitle, fallbackIcon) {
   return { title, icon };
 }
 
-export function getDocsNav() {
+export function getDocsNav(lang = 'en') {
   const nav = JSON.parse(JSON.stringify(staticNav)); // deep copy
   const basePath = path.join(process.cwd(), 'src/app/[lang]/docs');
 
   for (const section of nav) {
+    // Translate hardcoded categories if pt-br
+    if (lang === 'pt-br') {
+      if (section.title === "FIVEM MAPS") section.title = "MAPAS FIVEM";
+      if (section.title === "FIVEM SCRIPTS") section.title = "SCRIPTS FIVEM";
+    }
+
     if (section.items) {
       for (const item of section.items) {
+        // Translate hardcoded welcome item
+        if (lang === 'pt-br' && item.title === "Welcome") {
+          item.title = "Bem-vindo";
+        }
+
         if (item.slug) {
           const itemPath = path.join(basePath, item.slug);
           try {
             if (fs.existsSync(itemPath) && fs.statSync(itemPath).isDirectory()) {
               const subFolders = fs.readdirSync(itemPath).filter(f => {
                 const subPath = path.join(itemPath, f);
-                return fs.statSync(subPath).isDirectory() && fs.existsSync(path.join(subPath, 'page.mdx'));
+                return fs.statSync(subPath).isDirectory() && 
+                       (fs.existsSync(path.join(subPath, `${lang}.mdx`)) || 
+                        fs.existsSync(path.join(subPath, 'en.mdx')) || 
+                        fs.existsSync(path.join(subPath, 'page.mdx')));
               });
 
               if (subFolders.length > 0) {
                 item.items = [];
                 for (const folder of subFolders) {
-                  const subPagePath = path.join(itemPath, folder, 'page.mdx');
+                  const targetMdx = fs.existsSync(path.join(itemPath, folder, `${lang}.mdx`)) 
+                                    ? `${lang}.mdx` 
+                                    : (fs.existsSync(path.join(itemPath, folder, 'en.mdx')) ? 'en.mdx' : 'page.mdx');
+                  const subPagePath = path.join(itemPath, folder, targetMdx);
                   const fallback = folder.charAt(0).toUpperCase() + folder.slice(1).replace(/-/g, ' ');
                   
                   // Default fallback icon

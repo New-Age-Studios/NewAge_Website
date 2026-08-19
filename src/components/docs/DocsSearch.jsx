@@ -89,7 +89,7 @@ export default function DocsSearch({ nav = [], lang }) {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search..."
+          placeholder={lang === 'pt-br' ? "Pesquisar..." : "Search..."}
           className="bg-transparent border-none outline-none text-[12px] text-white w-full placeholder:text-white/40"
           value={query}
           onChange={(e) => {
@@ -104,7 +104,7 @@ export default function DocsSearch({ nav = [], lang }) {
         <div className="absolute top-full left-0 right-0 mt-2 bg-[#1b1816] border border-[#3c3127] rounded-md shadow-2xl shadow-black overflow-hidden flex flex-col max-h-[350px]">
           {filteredItems.length === 0 ? (
             <div className="px-4 py-6 text-center text-[13px] text-white/50">
-              No results found for "{query}"
+              {lang === 'pt-br' ? `Nenhum resultado encontrado para "${query}"` : `No results found for "${query}"`}
             </div>
           ) : (
             <div className="overflow-y-auto py-1 custom-scrollbar">

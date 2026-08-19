@@ -40,7 +40,13 @@ export function Cover({ src, alt = "Cover image" }) {
   );
 }
 
+import { useParams } from 'next/navigation';
+
 export function Support() {
+  const params = useParams();
+  const lang = params?.lang || 'en';
+  const isPt = lang === 'pt-br';
+
   return (
     <div className="relative docs-callout mt-12 mb-8 border border-[#ff5100]/30 bg-gradient-to-r from-[#ff5100]/15 to-[#ff5100]/5 rounded-xl p-6 md:p-8 overflow-hidden">
       
@@ -52,19 +58,21 @@ export function Support() {
         <div className="flex-1">
           <div className="mb-2">
             <h4 className="text-white font-black text-xl tracking-wide uppercase" style={{ fontFamily: "'Barlow', sans-serif" }}>
-              Need additional help?
+              {isPt ? 'PRECISA DE MAIS AJUDA?' : 'Need additional help?'}
             </h4>
           </div>
           <p className="text-[#a1a1aa] text-sm mb-6 leading-relaxed max-w-lg mt-3">
-            If you need further support, encounter any bugs, or have questions regarding this product, our support team is always ready to assist you.
+            {isPt 
+              ? 'Se você precisar de mais suporte, encontrar algum bug ou tiver dúvidas sobre este produto, nossa equipe de suporte está sempre pronta para ajudar.' 
+              : 'If you need further support, encounter any bugs, or have questions regarding this product, our support team is always ready to assist you.'}
           </p>
           <div className="flex flex-wrap gap-3">
             <Link 
-              href="/en/support" 
+              href={`/${lang}/support`}
               className="!no-underline !text-white text-xs font-bold tracking-wide bg-[#ff5100] px-5 py-2.5 rounded-lg transition-all hover:bg-[#e64a00] shadow-[0_0_15px_rgba(255,81,0,0.3)] hover:shadow-[0_0_20px_rgba(255,81,0,0.5)]"
               style={{ textDecoration: 'none', borderBottom: 'none' }}
             >
-              VISIT SUPPORT CENTER
+              {isPt ? 'VISITAR CENTRAL DE AJUDA' : 'VISIT SUPPORT CENTER'}
             </Link>
             <a 
               href="https://discord.gg/tyKTs4QyYA" 
@@ -73,7 +81,7 @@ export function Support() {
               className="!no-underline !text-white text-xs font-bold tracking-wide bg-[#18181b] border border-[#27272a] px-5 py-2.5 rounded-lg transition-colors hover:bg-[#27272a]"
               style={{ textDecoration: 'none', borderBottom: 'none' }}
             >
-              OPEN DISCORD TICKET
+              {isPt ? 'ABRIR TICKET NO DISCORD' : 'OPEN DISCORD TICKET'}
             </a>
           </div>
         </div>
