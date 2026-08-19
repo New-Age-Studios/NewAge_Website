@@ -98,8 +98,43 @@ export default function DocsSidebar({ lang, nav = [], dict }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Removed Auto-close on pathname, handled by onClick on leaf items
-  
+  // Swipe gestures for mobile sidebar
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    };
+
+    const handleTouchEnd = (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      
+      // Horizontal swipe threshold
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+        if (deltaX > 0 && touchStartX < 50) {
+          // Swipe right from the left edge opens it
+          setMobileOpen(true);
+        } else if (deltaX < 0 && mobileOpen) {
+          // Swipe left while open closes it
+          setMobileOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [mobileOpen]);
   return (
     <>
       {/* Mobile Top Bar (Replaces main Navbar on mobile) */}
