@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, Check, Heart } from "lucide-react";
+import { ChevronRight, Check, Heart, AlertTriangle } from "lucide-react";
 import { getPackage, getPackages, parseLocalizedDescription } from "@/lib/tebex";
 import { getBasketData } from "@/app/actions/cart";
 import ClientAddToCart from "@/components/ClientAddToCart";
@@ -83,11 +83,31 @@ export default async function ProductPage({ params }) {
               </p>
 
               <div className="flex flex-col gap-0">
-                <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} dict={dict.product} />
-                {product.total_price !== 0 && product.category?.name?.toLowerCase().includes("subscription") && (
-                  <FreeTrialButton packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} trialDays={7} dict={dict.product} />
+                {product.total_price !== 0 && product.category?.name?.toLowerCase().includes("subscription") ? (
+                  <div className="flex flex-col gap-4">
+                    <FreeTrialButton packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} trialDays={7} dict={dict.product} />
+                    
+                    {/* Attention Box */}
+                    <div className="rounded-xl p-4 border border-[#f97316]/20 bg-[#1c1410]">
+                      <div className="flex items-center gap-2 mb-2">
+                        <AlertTriangle size={15} className="text-[#f97316]" />
+                        <span className="text-[#f97316] font-bold italic text-sm">
+                          {lang === 'pt-br' ? 'Atenção' : 'Attention'}
+                        </span>
+                      </div>
+                      <p className="text-xs text-white/70 leading-relaxed font-medium">
+                        {lang === 'pt-br' 
+                          ? 'O teste grátis dura 7 dias e você pode cancelar antes da cobrança mensal, que é feita após os 7 dias de teste.'
+                          : 'The free trial lasts for 7 days and you can cancel before the monthly charge, which is billed after the 7-day trial.'}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} dict={dict.product} />
+                    <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} isSecondary={true} alreadyInCart={inCart} dict={dict.product} />
+                  </>
                 )}
-                <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} isSecondary={true} alreadyInCart={inCart} dict={dict.product} />
               </div>
 
               {product.total_price === 0 && (
