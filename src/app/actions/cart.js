@@ -138,7 +138,7 @@ export async function addToCart(formData) {
       if (authRes.ok) {
         const authJson = await authRes.json();
         const authUrl = authJson[0]?.url;
-        if (authUrl) redirect(authUrl);
+        if (authUrl) return { error: "login_required", authUrl };
       }
       throw new Error("Failed to load Tebex login screen.");
     }
@@ -228,7 +228,7 @@ export async function addSubscription(formData) {
       if (authRes.ok) {
         const authJson = await authRes.json();
         const authUrl = authJson[0]?.url;
-        if (authUrl) redirect(authUrl);
+        if (authUrl) return { error: "login_required", authUrl };
       }
       throw new Error("Failed to load Tebex login screen.");
     }

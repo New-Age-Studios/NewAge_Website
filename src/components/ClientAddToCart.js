@@ -4,11 +4,14 @@ import { useTransition, useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { ShoppingCart, Plus, Check, X } from "lucide-react";
 import { addToCart } from "@/app/actions/cart";
+import LoginModal from "./LoginModal";
 
 export default function ClientAddToCart({ packageId, returnPath, isSecondary = false, alreadyInCart = false, dict = {} }) {
   const [isPending, startTransition] = useTransition();
   const [added, setAdded] = useState(alreadyInCart);
   const [showModal, setShowModal] = useState(false);
+  const [loginUrl, setLoginUrl] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const router = useRouter();
   const params = useParams();
   const lang = params?.lang || "en";
@@ -26,8 +29,14 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
       formData.append("returnPath", returnPath);
       
       try {
-        await addToCart(formData);
+        const result = await addToCart(formData);
         
+        if (result?.error === "login_required") {
+          setLoginUrl(result.authUrl);
+          setShowLoginModal(true);
+          return;
+        }
+
         if (isSecondary) {
           // Only adds to cart and updates the header
           window.dispatchEvent(new Event("cart-updated"));
@@ -100,7 +109,7 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
                   setShowModal(false);
                   router.push(`/${lang}/cart`);
                 }}
-                className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:brightness-110 active:scale-95"
+                className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:brightness-110 active:scale-95 cursor-pointer"
                 style={{ background: "#f97316", color: "#fff" }}
               >
                 {dict.go_to_cart || "Go to Cart"}
@@ -111,7 +120,7 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
                   setShowModal(false);
                   router.push(`/${lang}/scripts?category=All`);
                 }}
-                className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:bg-white/5"
+                className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:bg-white/5 cursor-pointer"
                 style={{ background: "rgba(255,255,255,0.05)", color: "#fff", border: "1px solid rgba(255,255,255,0.1)" }}
               >
                 {dict.continue_shopping || "Continue Shopping"}
@@ -120,6 +129,13 @@ export default function ClientAddToCart({ packageId, returnPath, isSecondary = f
           </div>
         </div>
       )}
+
+      <LoginModal 
+        isOpen={showLoginModal} 
+        onClose={() => setShowLoginModal(false)} 
+        loginUrl={loginUrl} 
+        dict={dict} 
+      />
     </>
   );
 }

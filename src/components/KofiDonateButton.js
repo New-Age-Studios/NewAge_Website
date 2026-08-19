@@ -94,7 +94,7 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X size={18} />
@@ -108,7 +108,7 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
                 <button
                   type="button"
                   onClick={() => setType("onetime")}
-                  className={`py-2.5 text-xs font-bold rounded-xl transition-all ${
+                  className={`py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     type === "onetime"
                       ? "bg-[#f97316] text-white shadow-md"
                       : "text-white/50 hover:text-white"
@@ -119,7 +119,7 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
                 <button
                   type="button"
                   onClick={() => setType("monthly")}
-                  className={`py-2.5 text-xs font-bold rounded-xl transition-all ${
+                  className={`py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     type === "monthly"
                       ? "bg-[#f97316] text-white shadow-md"
                       : "text-white/50 hover:text-white"
@@ -143,7 +143,7 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
                         setAmount(val);
                         setCustomAmount("");
                       }}
-                      className={`py-2.5 rounded-xl text-xs font-bold transition-all border ${
+                      className={`py-2.5 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                         amount === val && !customAmount
                           ? "bg-orange-500/20 border-[#f97316] text-[#f97316]"
                           : "bg-[#141414] border-white/5 text-white/70 hover:border-white/20 hover:text-white"
@@ -200,7 +200,7 @@ export default function KofiDonateButton({ dict = {}, lang = "en" }) {
               {/* Donate Action Button */}
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-bold text-white transition-all hover:brightness-110 active:scale-95 flex items-center justify-center gap-2 text-base shadow-xl"
+                className="w-full py-4 rounded-xl font-bold text-white transition-all hover:brightness-110 active:scale-95 flex items-center justify-center gap-2 text-base shadow-xl cursor-pointer"
                 style={{
                   background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
                   boxShadow: "0 4px 20px rgba(249, 115, 22, 0.3)"
