@@ -127,7 +127,7 @@ export async function addToCart(formData) {
   const res = await fetch(`https://headless.tebex.io/api/baskets/${basketIdent}/packages`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ package_id: parseInt(packageId), quantity: 1 }),
+    body: JSON.stringify({ package_id: parseInt(packageId), quantity: 1, type: "single" }),
   });
 
   const json = await res.json();
@@ -200,4 +200,40 @@ export async function removeCoupon(couponCode) {
   if (!res.ok) {
     throw new Error("Error removing coupon.");
   }
+}
+
+export async function addSubscription(formData) {
+  const packageId = formData.get("packageId");
+  const returnPath = formData.get("returnPath");
+
+  const headersList = await headers();
+  const host = headersList.get("host") || "localhost:3000";
+  const protocol = host.includes("localhost") ? "http" : "https";
+  const fullReturnUrl = `${protocol}://${host}${returnPath}`;
+
+  const basketIdent = await getBasket();
+
+  const res = await fetch(`https://headless.tebex.io/api/baskets/${basketIdent}/packages`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ package_id: parseInt(packageId), quantity: 1, type: "subscription" }),
+  });
+
+  const json = await res.json();
+
+  if (!res.ok) {
+    if (json.status === 422 && json.detail && json.detail.includes("User must login")) {
+      const callbackUrl = `${protocol}://${host}/api/tebex/auth-callback?packageId=${packageId}&type=subscription`;
+      const authRes = await fetch(`${BASE_URL}/baskets/${basketIdent}/auth?returnUrl=${encodeURIComponent(callbackUrl)}`);
+      if (authRes.ok) {
+        const authJson = await authRes.json();
+        const authUrl = authJson[0]?.url;
+        if (authUrl) redirect(authUrl);
+      }
+      throw new Error("Failed to load Tebex login screen.");
+    }
+    throw new Error(json.detail || "Error adding item to cart.");
+  }
+
+  return true;
 }

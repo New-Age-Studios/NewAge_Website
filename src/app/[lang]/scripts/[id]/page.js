@@ -3,6 +3,7 @@ import { ChevronRight, Check, Heart } from "lucide-react";
 import { getPackage, getPackages, parseLocalizedDescription } from "@/lib/tebex";
 import { getBasketData } from "@/app/actions/cart";
 import ClientAddToCart from "@/components/ClientAddToCart";
+import FreeTrialButton from "@/components/FreeTrialButton";
 import KofiDonateButton from "@/components/KofiDonateButton";
 import ProductGallery from "@/components/ProductGallery";
 import { getDictionary } from "@/dictionaries";
@@ -83,6 +84,9 @@ export default async function ProductPage({ params }) {
 
               <div className="flex flex-col gap-0">
                 <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} dict={dict.product} />
+                {product.total_price !== 0 && product.category?.name?.toLowerCase().includes("subscription") && (
+                  <FreeTrialButton packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} trialDays={7} dict={dict.product} />
+                )}
                 <ClientAddToCart packageId={product.id} returnPath={`/${lang}/scripts/${product.id}`} isSecondary={true} alreadyInCart={inCart} dict={dict.product} />
               </div>
 

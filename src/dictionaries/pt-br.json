@@ -115,7 +115,8 @@
     "free_updates": "Atualizações gratuitas",
     "free_updates_desc": "Sempre na última versão",
     "support_24_7": "Suporte 24/7",
-    "support_24_7_desc": "Comunidade do Discord e documentação"
+    "support_24_7_desc": "Comunidade do Discord e documentação",
+    "start_trial": "Iniciar Teste Grátis de {days} Dias"
   },
   "cart": {
     "title": "Carrinho",
@@ -135,7 +136,9 @@
     "discount": "Desconto",
     "total_price": "Preço Total",
     "estimated": "Estimado em USD; cobrado no checkout",
-    "secure_checkout": "Checkout Seguro"
+    "secure_checkout": "Checkout Seguro",
+    "free": "Grátis",
+    "trial": "Teste Grátis"
   },
   "success": {
     "title": "Pedido Concluído!",

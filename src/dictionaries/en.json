@@ -115,7 +115,8 @@
     "free_updates": "Free lifetime updates",
     "free_updates_desc": "Always on the latest version",
     "support_24_7": "24/7 support",
-    "support_24_7_desc": "Discord community & docs"
+    "support_24_7_desc": "Discord community & docs",
+    "start_trial": "Start {days}-Day Free Trial"
   },
   "cart": {
     "title": "Cart",
@@ -135,7 +136,9 @@
     "discount": "Discount",
     "total_price": "Total Price",
     "estimated": "USD estimated; charged at checkout",
-    "secure_checkout": "Secure Checkout"
+    "secure_checkout": "Secure Checkout",
+    "free": "Free",
+    "trial": "Trial"
   },
   "success": {
     "title": "Order Complete!",
